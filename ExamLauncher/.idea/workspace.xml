@@ -1,34 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43e28416-a00f-4fe1-a8c2-d3d6e572878f" name="Changes" comment="" />
+    <list default="true" id="b5d0a501-5b98-4ee7-ae6f-27dbe9a9cb75" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ADS01/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/ADS01.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS01/src/main/java/hummel/ADS01.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/ADS02.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS02/src/main/java/hummel/ADS02.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/ADS03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS03/src/main/java/hummel/ADS03.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/ADS04.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ADS04/src/main/java/hummel/ADS04.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExamLauncher.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ExamLauncher.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tasks.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0201.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0202.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0203.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0204.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0205.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0301.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0302.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0401.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0402.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0501.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0502.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0503.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0601.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0602.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0603.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0604.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/Ex0605.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hummel/ExamLauncher.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="2MdzRVawjMrNurtHytln1PeEETp" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2PKH7VY2CPkVixlNSLTYOlyqXtY" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Eclipse/Java Projects/HeapSort",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Eclipse/University/Algorithms-and-Data-Structures-II/Lab01",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43e28416-a00f-4fe1-a8c2-d3d6e572878f" name="Changes" comment="" />
-      <created>1678112238688</created>
+      <changelist id="b5d0a501-5b98-4ee7-ae6f-27dbe9a9cb75" name="Changes" comment="" />
+      <created>1683198685141</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1678112238688</updated>
+      <updated>1683198685141</updated>
+      <workItem from="1683198686239" duration="53000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
