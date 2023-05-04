@@ -30,14 +30,14 @@ fun main() {
     println("Enter the color of the room (green, black, grey): ")
     val color = input.nextLine()
 
-    println("Enter the glowing of the room (true/false): ")
-    val glowing = input.nextLine()
+    println("Enter if there is glowing in the room (true/false): ")
+    val hasGlowing = input.nextLine()
 
-    println("Enter the glowing type of the room (true/false): ")
-    val direct = input.nextLine()
+    println("Enter if glowing is direct in the room (true/false): ")
+    val isGlowingDirect = input.nextLine()
 
-    println("Enter the med environment of the room (true/false): ")
-    val environment = input.nextLine()
+    println("Enter if there is med environment in the room (true/false): ")
+    val hasMedEnvironment = input.nextLine()
 
     var type: RoomType?
     do {
@@ -53,7 +53,7 @@ fun main() {
         wtype = WindowType.forName(w)
     } while (wtype == null)
 
-    val rm = Room(color, glowing, direct, environment, type, wtype)
+    val room = Room(color, hasGlowing, isGlowingDirect, hasMedEnvironment, type, wtype)
 
     val blackRoom = Room("grey", "true", "false", "false", RoomType.ROOM, WindowType.SMALL)
     val lab = Room("grey", "true", "true", "true", RoomType.ROOM, WindowType.BIG)
@@ -64,7 +64,7 @@ fun main() {
     println("|=======================================|")
     println()
     when (floor) {
-        Floors.ONE -> if (compareRooms(rm, blackRoom)) {
+        Floors.ONE -> if (compareRooms(room, blackRoom)) {
             println(
                 """
     You are on the first floor.
@@ -86,7 +86,7 @@ fun main() {
             drawAsAMatrix(left1, right, left2)
         }
 
-        Floors.TWO -> if (compareRooms(rm, lab)) {
+        Floors.TWO -> if (compareRooms(room, lab)) {
             println(
                 """
     You are on the second floor.
@@ -113,7 +113,7 @@ fun main() {
             drawAsAMatrix(left1, right, left2)
         }
 
-        Floors.THREE -> if (compareRooms(rm, prison)) {
+        Floors.THREE -> if (compareRooms(room, prison)) {
             println(
                 """
     You are on the third floor.
@@ -147,41 +147,41 @@ fun main() {
 }
 
 fun compareRooms(room1: Room, room2: Room): Boolean {
-    return room1.direct == room2.direct && room1.color == room2.color && room1.glowing == room2.glowing && room1.environment == room2.environment && room1.roomType.roomName == room2.roomType.roomName && room1.windowType.windowName == room2.windowType.windowName
+    return room1.isGlowingDirect == room2.isGlowingDirect && room1.color == room2.color && room1.hasGlowing == room2.hasGlowing && room1.hasMedEnvironment == room2.hasMedEnvironment && room1.roomType.roomName == room2.roomType.roomName && room1.windowType.windowName == room2.windowType.windowName
 }
 
 fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
     var lLeft1 = left1 / 5
     var lRight = right / 5
     var lLeft2 = left2 / 5
-    val matr = Array(26) { Array(26) { " " } }
+    val matrix = Array(26) { Array(26) { " " } }
     var x = 12
     var y = 12
     while (lLeft1 > 0) {
-        matr[x][y] = "G"
+        matrix[x][y] = "G"
         x--
         lLeft1--
     }
     while (lRight > 0) {
-        matr[x][y] = "G"
+        matrix[x][y] = "G"
         y--
         lRight--
     }
     while (lLeft2 > 0) {
-        matr[x][y] = "G"
+        matrix[x][y] = "G"
         x++
         lLeft2--
     }
-    matr[x][y] = "L"
-    matr[12][12] = "S"
+    matrix[x][y] = "L"
+    matrix[12][12] = "S"
     println("|=======================================|")
     println("|===============  ROUTE  ===============|")
     println("|=======================================|")
     println()
     println("==========================")
-    for (i in matr.indices) {
-        for (j in matr[i].indices) {
-            print(matr[i][j])
+    for (i in matrix.indices) {
+        for (j in matrix[i].indices) {
+            print(matrix[i][j])
         }
         println()
     }
@@ -205,9 +205,9 @@ enum class Floors(val eName: String) {
 
 class Room(
     var color: String,
-    var glowing: String,
-    var direct: String,
-    var environment: String,
+    var hasGlowing: String,
+    var isGlowingDirect: String,
+    var hasMedEnvironment: String,
     var roomType: RoomType,
     var windowType: WindowType
 ) {
