@@ -4,47 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5d0a501-5b98-4ee7-ae6f-27dbe9a9cb75" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExamLauncher.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0201.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0202.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0203.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0204.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0205.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0301.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0302.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0401.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0402.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0501.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0502.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0503.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0601.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0602.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0603.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0604.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/Ex0605.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hummel/ExamLauncher.kt" afterDir="false" />
+    <list default="true" id="c48b7ff1-5cc0-4a85-a32d-20e7ede101f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.settings/org.jetbrains.kotlin.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0201.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0202.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0203.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0204.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0205.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0301.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0302.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0401.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0402.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0501.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0502.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0503.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0601.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0602.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0603.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0604.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/Ex0605.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hummel/ExamLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,44 +21,50 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2PKH7VY2CPkVixlNSLTYOlyqXtY" />
+  <component name="ProjectId" id="2PKyIvFkUkttrm87PGRjfMT91AO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "1.8",
     "last_opened_file_path": "D:/Eclipse/University/Algorithms-and-Data-Structures-II/ExamLauncher/.project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15527344",
+    "project.structure.side.proportion": "0.4814815",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b5d0a501-5b98-4ee7-ae6f-27dbe9a9cb75" name="Changes" comment="" />
-      <created>1683198685141</created>
+      <changelist id="c48b7ff1-5cc0-4a85-a32d-20e7ede101f5" name="Changes" comment="" />
+      <created>1683219992202</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1683198685141</updated>
-      <workItem from="1683198686239" duration="53000" />
-      <workItem from="1683224408060" duration="1261000" />
+      <updated>1683219992202</updated>
+      <workItem from="1683219993181" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
