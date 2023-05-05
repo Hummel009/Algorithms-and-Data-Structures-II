@@ -147,7 +147,7 @@ fun main() {
 }
 
 fun compareRooms(room1: Room, room2: Room): Boolean {
-    return room1.isGlowingDirect == room2.isGlowingDirect && room1.color == room2.color && room1.hasGlowing == room2.hasGlowing && room1.hasMedEnvironment == room2.hasMedEnvironment && room1.roomType.roomName == room2.roomType.roomName && room1.windowType.windowName == room2.windowType.windowName
+    return room1.isGlowingDirect == room2.isGlowingDirect && room1.color == room2.color && room1.hasGlowing == room2.hasGlowing && room1.hasMedEnvironment == room2.hasMedEnvironment && room1.roomType == room2.roomType && room1.windowType == room2.windowType
 }
 
 fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
