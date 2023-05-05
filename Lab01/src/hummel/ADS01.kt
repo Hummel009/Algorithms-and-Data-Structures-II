@@ -211,14 +211,14 @@ class Room(
     var roomType: RoomType,
     var windowType: WindowType
 ) {
-    enum class RoomType(val roomName: String) {
-        OTSEK("otsek"), ROOM("room"), CORRIDOR("corridor");
+    enum class RoomType {
+        OTSEK, ROOM, CORRIDOR;
 
         companion object {
             fun forName(search: String): RoomType? {
-                for (r in values()) {
-                    if (search == r.roomName) {
-                        return r
+                for (room in values()) {
+                    if (search == room.name.lowercase()) {
+                        return room
                     }
                 }
                 return null
@@ -226,14 +226,14 @@ class Room(
         }
     }
 
-    enum class WindowType(val windowName: String) {
-        BIG("big"), SMALL("small"), NONE("none");
+    enum class WindowType {
+        BIG, SMALL, NONE;
 
         companion object {
             fun forName(search: String): WindowType? {
-                for (r in values()) {
-                    if (search == r.windowName) {
-                        return r
+                for (window in values()) {
+                    if (search == window.name.lowercase()) {
+                        return window
                     }
                 }
                 return null
