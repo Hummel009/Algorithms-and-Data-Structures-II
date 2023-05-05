@@ -212,7 +212,7 @@ class Room(
     var windowType: WindowType
 ) {
     enum class RoomType {
-        OTSEK, ROOM, CORRIDOR;
+        BLOCK, ROOM, CORRIDOR;
 
         companion object {
             fun forName(search: String): RoomType? {
