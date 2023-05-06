@@ -8,7 +8,8 @@ fun main() {
 	// Ask user to enter number of nodes
 	print("Enter number of nodes: ")
 	val scan = Scanner(System.`in`)
-	val n = scan.nextLine().toInt()
+	val n = scan.nextIntSafe()
+
 	println()
 
 	// Initialize adjacency matrix for graph
@@ -19,7 +20,7 @@ fun main() {
 		for (j in adjMatrix[i].indices) {
 			if (i != j) {
 				print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
-				adjMatrix[i][j] = scan.nextLine().toInt()
+				adjMatrix[i][j] = scan.nextIntSafe()
 			}
 		}
 	}
@@ -43,9 +44,10 @@ fun main() {
 
 	// Ask user to enter start and end nodes
 	print("Enter a way from: ")
-	val startNode = scan.nextInt() - 1
+	val startNode = scan.nextIntSafeDiapason(adjMatrix.indices) - 1
 	print("Enter a way to: ")
-	val endNode = scan.nextInt() - 1
+	val endNode = scan.nextIntSafeDiapason(adjMatrix.indices) - 1
+
 	println()
 
 	// Find all ways from start node to end node
@@ -156,6 +158,35 @@ fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 				distances[start][i] = distances[start][curr] + adjMatrix[curr][i]
 				queue.offer(i)
 			}
+		}
+	}
+}
+
+fun Scanner.nextIntSafe(): Int {
+	var int: Int
+	loop@ while (true) {
+		try {
+			int = this.nextLine().toInt()
+			return int
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
+		}
+	}
+}
+
+fun Scanner.nextIntSafeDiapason(diapason: IntRange): Int {
+	var int: Int
+	loop@ while (true) {
+		try {
+			int = this.nextLine().toInt()
+			if (int - 1 !in diapason) {
+				throw Exception()
+			}
+			return int
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
 		}
 	}
 }
