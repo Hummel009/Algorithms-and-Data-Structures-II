@@ -1,210 +1,155 @@
 package hummel
 
 import java.util.*
+import kotlin.math.max
 
-var step = IntArray(100)
-lateinit var arrv: Array<IntArray>
 
 fun main() {
+	// Ask user to enter number of nodes
+	print("Enter number of nodes: ")
 	val scan = Scanner(System.`in`)
-	print("Write Number of Nodes: ")
-	val i = scan.nextLine().toInt()
+	val n = scan.nextLine().toInt()
+	println()
 
-	arrv = Array(i) { IntArray(i) }
-	for (j in 0 until i) {
-		for (k in 0 until i) {
-			if (j != k) {
-				System.out.printf("Write the Distance: %d -> %d: ", j + 1, k + 1)
-				arrv[j][k] = scan.nextLine().toInt()
-			} else {
-				arrv[j][k] = 0
+	// Initialize adjacency matrix for graph
+	val adjMatrix = Array(n) { IntArray(n) }
+
+	// Ask user to enter weights for every connection between every node
+	for (i in adjMatrix.indices) {
+		for (j in adjMatrix[i].indices) {
+			if (i != j) {
+				print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
+				adjMatrix[i][j] = scan.nextLine().toInt()
 			}
 		}
 	}
+	println()
 
-	print("\n  |")
-	for (k in arrv.indices) {
+	// Print distances in graph as a table
+	println("Adjustment matrix:")
+	print("\n |")
+	for (k in adjMatrix.indices) {
 		System.out.printf("__%d_|", k + 1)
 	}
+	println()
+	for (i in adjMatrix.indices) {
+		print("${i + 1}|")
+		for (j in adjMatrix.indices) {
+			print(" ${adjMatrix[i][j].toString().padStart(2, ' ')} |")
+		}
+		println()
+	}
+	println()
 
-	print("\n")
-	for (j in arrv.indices) {
-		System.out.printf("|%d|", j + 1)
-		for (k in arrv[j].indices) {
-			System.out.printf(" %2d |", arrv[j][k])
-		}
-		print("\n")
+	// Ask user to enter start and end nodes
+	print("Enter a way from: ")
+	val startNode = scan.nextInt() - 1
+	print("Enter a way to: ")
+	val endNode = scan.nextInt() - 1
+	println()
+
+	// Find all ways from start node to end node
+	val visited = BooleanArray(n)
+	val ways = mutableListOf<List<Int>>()
+	dfs(startNode, endNode, visited, mutableListOf(startNode), ways, adjMatrix)
+	if (ways.isEmpty()) {
+		println("No ways found.")
+		return
 	}
 
-	print("\nFind a way from: ")
-	var tmp1 = scan.nextLine().toInt()
+	// Print all ways from start node to end node
+	println("Ways from node $startNode to node $endNode:")
+	for (way in ways) {
+		val nodeValues = way.map { node -> node + 1 }
+		println(nodeValues.joinToString(" -> "))
+	}
+	println()
 
-	print("Find a way to: ")
-	var tmp2 = scan.nextLine().toInt()
+	// Calculate max and min ways from start node to end node
+	val lengths = ways.map { path ->
+		path.foldIndexed(0) { i, acc, curr ->
+			if (i == 0) acc else acc + adjMatrix[path[i - 1]][curr]
+		}
+	}
+	val maxLength = lengths.maxOrNull()
+	val minLength = lengths.minOrNull()
+	println("Min way length: $minLength")
+	println("Max way length: $maxLength")
 
-	val arrp = intArrayOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
-	arrp[tmp1 - 1] = 0
-	search(tmp1 - 1, 0, arrp, tmp1 - 1, tmp2 - 1, i, 0)
-	var y = 0
-	while (step[y] != 0) {
-		y++
+	// Calculate graph center
+	val distances = Array(n) { IntArray(n) { Int.MAX_VALUE } }
+	for (i in 0 until n) {
+		bfs(i, adjMatrix, distances)
 	}
-	print("\n")
-	for (g in 0 until y - 1) {
-		for (j in 0 until y - g - 1) {
-			if (step[j] > step[j + 1]) {
-				val tmps = step[j]
-				step[j] = step[j + 1]
-				step[j + 1] = tmps
-			}
-		}
-	}
-	val arrm = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-	print("Min: ")
-	arrm[0] = tmp1
-	maxMin(tmp1 - 1, 0, arrp, tmp1 - 1, tmp2 - 1, i, 0, step[0], arrm)
-	print("Max: ")
-	maxMin(tmp1 - 1, 0, arrp, tmp1 - 1, tmp2 - 1, i, 0, step[y - 1], arrm)
-	print("\nAll: \n")
-	for (g in 0 until y) {
-		if (g == 0 || step[g] != step[g - 1]) {
-			maxMin(tmp1 - 1, 0, arrp, tmp1 - 1, tmp2 - 1, i, 0, step[g], arrm)
-		}
-	}
-	val ex = Array(11) { IntArray(11) }
-	for (c1 in 0..10) {
-		Arrays.fill(ex[c1], 0)
-	}
-	tmp1 = 1
-	while (tmp1 <= i) {
-		tmp2 = 1
-		while (tmp2 <= i) {
-			for (g in 0..i) {
-				arrp[g] = 1
-			}
-			var g1 = 0
-			while (step[g1] != 0) {
-				step[g1] = 0
-				g1++
-			}
-			arrp[tmp1 - 1] = 0
-			search(tmp1 - 1, 0, arrp, tmp1 - 1, tmp2 - 1, i, 0)
-			var w = 0
-			while (step[w] != 0) {
-				w++
-			}
-			for (g in 0 until w - 1) {
-				for (j in 0 until w - g - 1) {
-					if (step[j] > step[j + 1]) {
-						val tmps = step[j]
-						step[j] = step[j + 1]
-						step[j + 1] = tmps
-					}
-				}
-			}
-			ex[tmp1 - 1][tmp2 - 1] = step[0]
-			tmp2++
-		}
-		tmp1++
-	}
-	for (maxj in 0 until i) {
-		var temp = 2
-		var tempmax = ex[0][maxj]
-		if (tempmax == 0) {
-			temp--
-		}
-		for (maxi in 1 until i) {
-			if (ex[maxi][maxj] > tempmax) {
-				tempmax = ex[maxi][maxj]
-			}
-			if (ex[maxi][maxj] == 0) {
-				temp--
-			}
-		}
-		if (temp > 0) {
-			ex[i][maxj] = tempmax
-		} else {
-			ex[i][maxj] = 0
-		}
-	}
-	print("\n  |")
-	for (k in 0 until i) {
-		System.out.printf("__%d_|", k + 1)
-	}
-	print("\n")
-	for (j in 0 until i) {
-		System.out.printf("|%d|", j + 1)
-		for (k in 0 until i) {
-			System.out.printf(" %2d |", ex[j][k])
-		}
-		print("\n")
-	}
-	var tempmin = ex[i][0]
-	for (maxj in 1 until i) {
-		if (ex[i][maxj] < tempmin && ex[i][maxj] != 0) {
-			tempmin = ex[i][maxj]
-		}
-	}
-	print("\nCenter(s): ")
-	for (maxj in 0 until i) {
-		if (ex[i][maxj] == tempmin) {
-			System.out.printf("%d ", maxj + 1)
-		}
-	}
+
+	val centers = getCenters(distances).map { it + 1 }
+	println("Centers: $centers")
 }
 
-private fun maxMin(
-	j: Int,
-	k: Int,
-	arrp: IntArray,
-	tmp1: Int,
-	tmp2: Int,
-	i: Int,
-	tmp: Int,
-	mm: Int,
-	arrm: IntArray
+fun getCenters(distances: Array<IntArray>): Set<Int> {
+	val numVertices = distances.size
+	val centers = mutableSetOf<Int>()
+
+	for (i in 0 until numVertices) {
+		var maxDist = Int.MIN_VALUE
+
+		for (j in 0 until numVertices) {
+			if (i == j) continue
+
+			maxDist = max(maxDist, distances[i][j])
+		}
+
+		var isCenter = true
+
+		for (j in 0 until numVertices) {
+			if (i == j) continue
+
+			if (distances[i][j] > maxDist) {
+				isCenter = false
+				break
+			}
+		}
+
+		if (isCenter) centers.add(i)
+	}
+
+	return centers
+}
+
+fun dfs(
+	curr: Int,
+	end: Int,
+	visited: BooleanArray,
+	path: MutableList<Int>,
+	ways: MutableList<List<Int>>,
+	adjMatrix: Array<IntArray>
 ) {
-	var k = k
-	while (k < i && j != tmp2) {
-		if (arrv[j][k] != 0 && arrp[k] != 0) {
-			val arrpt = arrp.clone()
-			val arrmt = arrm.clone()
-			var g = 0
-			while (arrmt[g] != 0) {
-				g++
+	visited[curr] = true
+	if (curr == end) {
+		ways.add(path.toList())
+	} else {
+		for (i in adjMatrix[curr].indices) {
+			if (adjMatrix[curr][i] != 0 && !visited[i]) {
+				path.add(i)
+				dfs(i, end, visited, path, ways, adjMatrix)
+				path.removeAt(path.lastIndex)
 			}
-			arrmt[g] = k + 1
-			arrpt[k] = 0
-			maxMin(k, 0, arrpt, tmp1, tmp2, i, tmp + arrv[j][k], mm, arrmt)
 		}
-		k++
 	}
-	if (j == tmp2 && tmp == mm) {
-		System.out.printf("%d ", arrm[0])
-		var g = 1
-		while (arrm[g] != 0) {
-			System.out.printf("-> %d ", arrm[g])
-			g++
-		}
-		System.out.printf("(%d)\n", tmp)
-	}
+	visited[curr] = false
 }
 
-private fun search(j: Int, k: Int, arrp: IntArray, tmp1: Int, tmp2: Int, i: Int, tmp: Int) {
-	var k = k
-	while (k < i && j != tmp2) {
-		if (arrv[j][k] != 0 && arrp[k] != 0) {
-			val arrpt = arrp.clone()
-			arrpt[k] = 0
-			search(k, 0, arrpt, tmp1, tmp2, i, tmp + arrv[j][k])
+fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
+	val queue = LinkedList<Int>()
+	queue.offer(start)
+	distances[start][start] = 0
+	while (queue.isNotEmpty()) {
+		val curr = queue.poll()
+		for (i in adjMatrix[curr].indices) {
+			if (adjMatrix[curr][i] != 0 && distances[start][i] == Int.MAX_VALUE) {
+				distances[start][i] = distances[start][curr] + adjMatrix[curr][i]
+				queue.offer(i)
+			}
 		}
-		k++
-	}
-	if (j == tmp2) {
-		var t = 0
-		while (step[t] != 0) {
-			t++
-		}
-		step[t] = tmp
 	}
 }
