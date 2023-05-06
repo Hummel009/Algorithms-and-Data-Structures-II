@@ -50,11 +50,11 @@ private fun editItem(item: Item) {
 	val scan = Scanner(System.`in`)
 
 	while (true) {
-		val read = scan.nextLine().toInt()
-		if (read == 0) {
+		val id = scan.nextIntSafe()
+		if (id == 0) {
 			break
 		}
-		item.ids.add(read)
+		item.ids.add(id)
 	}
 	item.ids.sort()
 	while (true) {
@@ -63,19 +63,19 @@ private fun editItem(item: Item) {
 		if (read == "No") {
 			break
 		}
-		val temp = ArrayList<Int>()
+		val ids = ArrayList<Int>()
 		println("Enter the name:")
 		val name = scan.nextLine()
 		println("Enter the new ids:")
 		while (true) {
-			val reads = scan.nextLine().toInt()
-			if (reads == 0) {
+			val id = scan.nextIntSafe()
+			if (id == 0) {
 				break
 			}
-			temp.add(reads)
+			ids.add(id)
 		}
-		temp.sort()
-		val sub = Item(name, temp)
+		ids.sort()
+		val sub = Item(name, ids)
 		item.subs.add(sub)
 	}
 }
@@ -87,7 +87,7 @@ private fun editItem() {
 	}
 	println("Enter the number of the old item.")
 	val scan = Scanner(System.`in`)
-	val id = scan.nextLine().toInt()
+	val id = scan.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		editItem(item)
@@ -117,7 +117,7 @@ private fun removeItem() {
 	}
 	println("Enter the number of the removal item.")
 	val scan = Scanner(System.`in`)
-	val id = scan.nextLine().toInt()
+	val id = scan.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		list.remove(item)
@@ -169,10 +169,20 @@ class Item(
 		if (subs.isEmpty()) {
 			return "$name: $ids, sub does not exist."
 		}
-		val sb = StringBuilder().append(name).append(": ").append(ids.toString()).append(", subs:\n")
-		for (sub in subs) {
-			sb.append(sub.toString()).append("\n")
+		return buildString {
+			append("$name: $ids, subs:\n")
+			append(subs.joinToString("\n") { it.toString() })
 		}
-		return sb.toString()
+	}
+}
+
+fun Scanner.nextIntSafe(): Int {
+	loop@ while (true) {
+		try {
+			return nextLine().toInt()
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
+		}
 	}
 }

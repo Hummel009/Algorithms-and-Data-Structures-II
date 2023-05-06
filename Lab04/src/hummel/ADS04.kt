@@ -44,9 +44,9 @@ fun main() {
 
 	// Ask user to enter start and end nodes
 	print("Enter a way from: ")
-	val startNode = scan.nextIntSafeDiapason(adjMatrix.indices) - 1
+	val startNode = scan.nextIntSafeRange(adjMatrix.indices) - 1
 	print("Enter a way to: ")
-	val endNode = scan.nextIntSafeDiapason(adjMatrix.indices) - 1
+	val endNode = scan.nextIntSafeRange(adjMatrix.indices) - 1
 
 	println()
 
@@ -163,11 +163,9 @@ fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 }
 
 fun Scanner.nextIntSafe(): Int {
-	var int: Int
 	loop@ while (true) {
 		try {
-			int = this.nextLine().toInt()
-			return int
+			return nextLine().toInt()
 		} catch (e: Exception) {
 			print("Error! Enter the correct value: ")
 			continue@loop
@@ -175,11 +173,10 @@ fun Scanner.nextIntSafe(): Int {
 	}
 }
 
-fun Scanner.nextIntSafeDiapason(diapason: IntRange): Int {
-	var int: Int
+fun Scanner.nextIntSafeRange(diapason: IntRange): Int {
 	loop@ while (true) {
 		try {
-			int = this.nextLine().toInt()
+			val int = this.nextLine().toInt()
 			if (int - 1 !in diapason) {
 				throw Exception()
 			}

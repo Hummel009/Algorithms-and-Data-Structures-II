@@ -8,10 +8,10 @@ fun main() {
 	val scan = Scanner(System.`in`)
 	print("ENTER NUMBERS (example: 45 10 7 12 90 50): ")
 	for (i in 0..5) {
-		arr[i] = scan.nextLine().toInt()
+		arr[i] = scan.nextIntSafe()
 	}
 	print("ENTER REMOVAL (example: 7): ")
-	val removal = scan.nextLine().toInt()
+	val removal = scan.nextIntSafe()
 	val bst = ADS03(arr, removal)
 	print("START TREE: ")
 	bst.print()
@@ -192,5 +192,16 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	class Node(var value: Int) {
 		var left: Node? = null
 		var right: Node? = null
+	}
+}
+
+fun Scanner.nextIntSafe(): Int {
+	loop@ while (true) {
+		try {
+			return nextLine().toInt()
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
+		}
 	}
 }

@@ -18,42 +18,57 @@ fun main() {
     println("─██░░██──────────██░░██─██░░██──██░░██─██░░░░░░░░░░░░░░██─██░░░░░░░░░░██─")
     println("─██████──────────██████─██████──██████─██████████████████─██████████████─")
     println("─────────────────────────────────────────────────────────────────────────")
-    val input = Scanner(System.`in`)
+    val scan = Scanner(System.`in`)
 
-    var floor: Floors?
-    do {
-        println("Enter the color of the floor: ")
-        val color = input.nextLine()
-        floor = Floors.forName(color)
-    } while (floor == null)
+    println("Enter the color of the floor (green, black, grey): ")
+    var floor: Floors? = null
+    loop@ while (floor == null) {
+        try {
+            val input = scan.nextLine().uppercase()
+            floor = Floors.valueOf(input)
+        } catch (e: Exception) {
+            print("Error! Enter the correct value: ")
+            continue@loop
+        }
+    }
 
     println("Enter the color of the room (green, black, grey): ")
-    val color = input.nextLine()
+    val color = scan.nextLine()
 
     println("Enter if there is glowing in the room (true/false): ")
-    val hasGlowing = input.nextLine()
+    val hasGlowing = scan.nextLine()
 
     println("Enter if glowing is direct in the room (true/false): ")
-    val isGlowingDirect = input.nextLine()
+    val isGlowingDirect = scan.nextLine()
 
     println("Enter if there is med environment in the room (true/false): ")
-    val hasMedEnvironment = input.nextLine()
+    val hasMedEnvironment = scan.nextLine()
 
-    var type: RoomType?
-    do {
-        println("Enter the room type of the room: ")
-        val r = input.nextLine()
-        type = RoomType.forName(r)
-    } while (type == null)
+    println("Enter the room type of the room: ")
+    var roomType: RoomType? = null
+    loop@ while (roomType == null) {
+        try {
+            val input = scan.nextLine().uppercase()
+            roomType = RoomType.valueOf(input)
+        } catch (e: Exception) {
+            print("Error! Enter the correct value: ")
+            continue@loop
+        }
+    }
 
-    var wtype: WindowType?
-    do {
-        println("Enter the window type of the room: ")
-        val w = input.nextLine()
-        wtype = WindowType.forName(w)
-    } while (wtype == null)
+    println("Enter the window type of the room: ")
+    var windowType: WindowType? = null
+    loop@ while (windowType == null) {
+        try {
+            val input = scan.nextLine().uppercase()
+            windowType = WindowType.valueOf(input)
+        } catch (e: Exception) {
+            print("Error! Enter the correct value: ")
+            continue@loop
+        }
+    }
 
-    val room = Room(color, hasGlowing, isGlowingDirect, hasMedEnvironment, type, wtype)
+    val room = Room(color, hasGlowing, isGlowingDirect, hasMedEnvironment, roomType, windowType)
 
     val blackRoom = Room("grey", "true", "false", "false", RoomType.ROOM, WindowType.SMALL)
     val lab = Room("grey", "true", "true", "true", RoomType.ROOM, WindowType.BIG)
@@ -64,7 +79,7 @@ fun main() {
     println("|=======================================|")
     println()
     when (floor) {
-        Floors.ONE -> if (compareRooms(room, blackRoom)) {
+        Floors.BLACK -> if (compareRooms(room, blackRoom)) {
             println(
                 """
     You are on the first floor.
@@ -86,7 +101,7 @@ fun main() {
             drawAsAMatrix(left1, right, left2)
         }
 
-        Floors.TWO -> if (compareRooms(room, lab)) {
+        Floors.GREY -> if (compareRooms(room, lab)) {
             println(
                 """
     You are on the second floor.
@@ -113,7 +128,7 @@ fun main() {
             drawAsAMatrix(left1, right, left2)
         }
 
-        Floors.THREE -> if (compareRooms(room, prison)) {
+        Floors.GREEN -> if (compareRooms(room, prison)) {
             println(
                 """
     You are on the third floor.
@@ -188,19 +203,8 @@ fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
     println("==========================")
 }
 
-enum class Floors(val eName: String) {
-    ONE("black"), TWO("grey"), THREE("green");
-
-    companion object {
-        fun forName(search: String): Floors? {
-            for (color in values()) {
-                if (search == color.eName) {
-                    return color
-                }
-            }
-            return null
-        }
-    }
+enum class Floors {
+    BLACK, GREY, GREEN;
 }
 
 class Room(
@@ -213,31 +217,9 @@ class Room(
 ) {
     enum class RoomType {
         BLOCK, ROOM, CORRIDOR;
-
-        companion object {
-            fun forName(search: String): RoomType? {
-                for (room in values()) {
-                    if (search == room.name.lowercase()) {
-                        return room
-                    }
-                }
-                return null
-            }
-        }
     }
 
     enum class WindowType {
         BIG, SMALL, NONE;
-
-        companion object {
-            fun forName(search: String): WindowType? {
-                for (window in values()) {
-                    if (search == window.name.lowercase()) {
-                        return window
-                    }
-                }
-                return null
-            }
-        }
     }
 }
