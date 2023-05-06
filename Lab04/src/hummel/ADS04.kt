@@ -94,7 +94,9 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 		var maxDist = Int.MIN_VALUE
 
 		for (j in 0 until numVertices) {
-			if (i == j) continue
+			if (i == j) {
+				continue
+			}
 
 			maxDist = max(maxDist, distances[i][j])
 		}
@@ -102,7 +104,9 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 		var isCenter = true
 
 		for (j in 0 until numVertices) {
-			if (i == j) continue
+			if (i == j) {
+				continue
+			}
 
 			if (distances[i][j] > maxDist) {
 				isCenter = false
@@ -110,7 +114,9 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 			}
 		}
 
-		if (isCenter) centers.add(i)
+		if (isCenter) {
+			centers.add(i)
+		}
 	}
 
 	return centers
