@@ -32,13 +32,13 @@ object Ex0502 {
 			if (table[hashCode] == null) {
 				table[hashCode] = Words()
 			}
-			table[hashCode]!!.add(string)
+			(table[hashCode] ?: return).add(string)
 		}
 
 		fun delete(string: String) {
 			val hashCode = hashCode(string)
-			if (table[hashCode] != null && !table[hashCode]!!.isEmpty) {
-				table[hashCode]!!.delete(string)
+			if (table[hashCode] != null && !(table[hashCode] ?: return).isEmpty) {
+				(table[hashCode] ?: return).delete(string)
 			}
 		}
 

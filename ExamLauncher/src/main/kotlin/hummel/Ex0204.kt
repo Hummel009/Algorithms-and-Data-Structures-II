@@ -13,8 +13,7 @@ object Ex0204 {
 		for (i in 0 until operationCount) {
 			val operation: String = scan.next()
 			if (operation.startsWith("push")) {
-				var value = 0
-				value = scan.nextInt()
+				val value: Int = scan.nextInt()
 				operationStack.push(value)
 				maxStack.push(max(if (maxStack.isEmpty()) 0 else maxStack.peek(), value))
 			} else if (operation.startsWith("pop")) {

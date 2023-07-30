@@ -25,13 +25,13 @@ object Ex0601 {
 		if (index == -1) {
 			return
 		}
-		preOrder.append(nodes[index]!!.value)
+		preOrder.append((nodes[index] ?: return).value)
 		preOrder.append(" ")
-		walk(nodes[index]!!.left)
-		inOrder.append(nodes[index]!!.value)
+		walk((nodes[index] ?: return).left)
+		inOrder.append((nodes[index] ?: return).value)
 		inOrder.append(" ")
-		walk(nodes[index]!!.right)
-		postOrder.append(nodes[index]!!.value)
+		walk((nodes[index] ?: return).right)
+		postOrder.append((nodes[index] ?: return).value)
 		postOrder.append(" ")
 	}
 

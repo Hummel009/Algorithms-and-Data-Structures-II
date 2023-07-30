@@ -60,10 +60,10 @@ object Ex0604 {
 		}
 
 		fun sum(l: Int, r: Int): Long {
-			val f_l = ((l + lastSum) % 1000000001).toInt()
-			val f_r = ((r + lastSum) % 1000000001).toInt()
+			val fL = ((l + lastSum) % 1000000001).toInt()
+			val fR = ((r + lastSum) % 1000000001).toInt()
 			var sum: Long = 0
-			for (i in f_l..f_r) {
+			for (i in fL..fR) {
 				if (set.contains(i)) {
 					sum += i.toLong()
 				}

@@ -11,7 +11,7 @@ object Ex0302 {
 		val processesCount = scan.nextInt()
 		for (i in 0 until processesCount) {
 			val firstFree = heap.firstFree
-			System.out.printf("%s %s%n", firstFree!!.number, firstFree.time)
+			System.out.printf("%s %s%n", (firstFree ?: return).number, firstFree.time)
 			val newTime = scan.nextLong()
 			if (newTime != 0L) {
 				heap.changeTime(newTime)
@@ -29,7 +29,7 @@ object Ex0302 {
 		}
 
 		fun changeTime(newTime: Long) {
-			processors[0]!!.time += newTime
+			(processors[0] ?: return).time += newTime
 			siftDown(0)
 		}
 
@@ -44,15 +44,24 @@ object Ex0302 {
 				val leftChildIndex = 2 * index + 1
 				val rightChildIndex = leftChildIndex + 1
 				smallestIndex = if (rightChildIndex >= size) {
-					if (processors[leftChildIndex]!!.time > processors[index]!!.time) index else leftChildIndex
-				} else if (processors[leftChildIndex]!!.time > processors[rightChildIndex]!!.time) {
+					if ((processors[leftChildIndex] ?: return).time > (processors[index]
+							?: return).time
+					) index else leftChildIndex
+				} else if ((processors[leftChildIndex] ?: return).time > (processors[rightChildIndex] ?: return).time) {
 					rightChildIndex
-				} else if (processors[leftChildIndex]!!.time == processors[rightChildIndex]!!.time) {
-					if (processors[leftChildIndex]!!.number > processors[rightChildIndex]!!.number) rightChildIndex else leftChildIndex
+				} else if ((processors[leftChildIndex] ?: return).time == (processors[rightChildIndex]
+						?: return).time
+				) {
+					if ((processors[leftChildIndex] ?: return).number > (processors[rightChildIndex]
+							?: return).number
+					) rightChildIndex else leftChildIndex
 				} else {
 					leftChildIndex
 				}
-				if (top!!.time < processors[smallestIndex]!!.time || top.time == processors[smallestIndex]!!.time && top.number <= processors[smallestIndex]!!.number) {
+				if ((top ?: return).time < (processors[smallestIndex]
+						?: return).time || top.time == (processors[smallestIndex]
+						?: return).time && top.number <= (processors[smallestIndex] ?: return).number
+				) {
 					break
 				}
 				processors[index] = processors[smallestIndex]

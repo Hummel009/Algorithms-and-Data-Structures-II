@@ -20,7 +20,7 @@ object Ex0202 {
 		}
 		var height = 1
 		for (index in tree.indices) {
-			height = Math.max(height, heightCounter(tree, index))
+			height = height.coerceAtLeast(heightCounter(tree, index))
 		}
 		println(height)
 	}

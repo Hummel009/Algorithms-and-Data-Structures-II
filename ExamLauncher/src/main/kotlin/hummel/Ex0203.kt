@@ -25,7 +25,7 @@ object Ex0203 {
 	}
 
 	private fun process(pack: Package) {
-		if (buffer!!.size < bufferSize) {
+		if ((buffer ?: return).size < bufferSize) {
 			println(time.coerceAtLeast(pack.average))
 			if (pack.average >= time) {
 				time = pack.endTime
@@ -33,17 +33,17 @@ object Ex0203 {
 				time += pack.duration
 			}
 			pack.end = time
-			buffer!!.add(pack)
+			(buffer ?: return).add(pack)
 		} else if (pack.average >= buffer!!.first.end) {
 			println(time.coerceAtLeast(pack.average))
-			if (time > buffer!!.last.end) {
+			if (time > (buffer ?: return).last.end) {
 				time += pack.duration
 			} else {
-				time = buffer!!.last.end + pack.duration
+				time = (buffer ?: return).last.end + pack.duration
 			}
-			buffer!!.removeFirst()
+			(buffer ?: return).removeFirst()
 			pack.end = time
-			buffer!!.add(pack)
+			(buffer ?: return).add(pack)
 		} else {
 			println("-1")
 		}
