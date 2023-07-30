@@ -56,7 +56,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	fun print() {
 		println()
 		println()
-		print(root!!, "", "")
+		print(root ?: return, "", "")
 	}
 
 	private fun print(root: Node, s: String, isLeft: String) {
@@ -68,8 +68,8 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 
 	fun printABR() {
-		printABR(root!!)
-		typeABR[counterABR] = root!!.value
+		printABR(root ?: return)
+		typeABR[counterABR] = (root ?: return).value
 		counterABR++
 	}
 
@@ -84,7 +84,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	fun printABRLinked() {
 		println()
 		println()
-		printABRLinked(root!!, "", "")
+		printABRLinked(root ?: return, "", "")
 	}
 
 	private fun printABRLinked(root: Node, s: String, isLeft: String) {
@@ -99,8 +99,8 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 
 	fun printARB() {
-		printARB(root!!)
-		typeARB[counterARB] = root!!.value
+		printARB(root ?: return)
+		typeARB[counterARB] = (root ?: return).value
 		counterARB++
 	}
 
@@ -115,7 +115,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	fun printARBLinked() {
 		println()
 		println()
-		printARBLinked(root!!, "", "")
+		printARBLinked(root ?: return, "", "")
 	}
 
 	private fun printARBLinked(root: Node, s: String, isLeft: String) {
@@ -130,8 +130,8 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 
 	fun printRAB() {
-		printRAB(root!!)
-		typeRAB[counterRAB] = root!!.value
+		printRAB(root ?: return)
+		typeRAB[counterRAB] = (root ?: return).value
 		counterRAB++
 	}
 
@@ -146,7 +146,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	fun printRABLinked() {
 		println()
 		println()
-		printRABLinked(root!!, "", "")
+		printRABLinked(root ?: return, "", "")
 	}
 
 	private fun printRABLinked(root: Node, s: String, isLeft: String) {
