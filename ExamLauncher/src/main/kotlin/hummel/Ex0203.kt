@@ -11,16 +11,15 @@ object Ex0203 {
 	fun launch() {
 		bufferSize = scan.nextInt()
 		buffer = ArrayDeque(bufferSize)
-		val packageCount = scan.nextInt()
-		if (packageCount == 0) {
-			println()
-		} else if (packageCount == 1) {
-			println(scan.nextInt())
-		} else {
-			for (i in 0 until packageCount) {
-				process(Package(scan.nextInt(), scan.nextInt()))
+		when (val packageCount = scan.nextInt()) {
+			0 -> println()
+			1 -> println(scan.nextInt())
+			else -> {
+				for (i in 0 until packageCount) {
+					process(Package(scan.nextInt(), scan.nextInt()))
+				}
+				scan.close()
 			}
-			scan.close()
 		}
 	}
 
@@ -34,7 +33,7 @@ object Ex0203 {
 			}
 			pack.end = time
 			(buffer ?: return).add(pack)
-		} else if (pack.average >= buffer!!.first.end) {
+		} else if (pack.average >= (buffer ?: return).first.end) {
 			println(time.coerceAtLeast(pack.average))
 			if (time > (buffer ?: return).last.end) {
 				time += pack.duration
@@ -50,7 +49,7 @@ object Ex0203 {
 	}
 
 	class Package(var average: Int, var duration: Int) {
-		var end = 0
+		var end: Int = 0
 		val endTime: Int
 			get() = average + duration
 	}

@@ -21,7 +21,7 @@ object Ex0401 {
 	class Set(tablesCount: Int) {
 		private var rank: IntArray
 		private var setArray: IntArray
-		var maxRank = 0
+		var maxRank: Int = 0
 
 		init {
 			setArray = IntArray(tablesCount)

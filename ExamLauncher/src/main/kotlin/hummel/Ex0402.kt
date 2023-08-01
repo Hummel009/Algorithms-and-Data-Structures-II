@@ -3,7 +3,7 @@ package hummel
 import java.util.*
 
 object Ex0402 {
-	var scan = Scanner(System.`in`)
+	var scan: Scanner = Scanner(System.`in`)
 
 	fun launch() {
 		val maxNumber = scan.nextInt()
