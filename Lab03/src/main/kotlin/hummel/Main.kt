@@ -2,7 +2,7 @@ package hummel
 
 import java.util.*
 
-val arr = IntArray(6)
+val arr: IntArray = IntArray(6)
 
 fun main() {
 	val scan = Scanner(System.`in`)

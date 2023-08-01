@@ -3,7 +3,6 @@ package hummel
 import java.util.*
 import kotlin.math.max
 
-
 fun main() {
 	// Ask user to enter number of nodes
 	print("Enter number of nodes: ")
