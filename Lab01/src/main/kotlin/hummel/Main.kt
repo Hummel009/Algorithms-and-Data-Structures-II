@@ -82,15 +82,15 @@ fun main() {
 		Floors.BLACK -> if (compareRooms(room, blackRoom)) {
 			println(
 				"""
-    You are on the first floor.
-    Turn left and go 12 steps.
-    Turn to the angle of 45 degrees to right and go 50 steps.
-    Turn to the angle of 45 degrees to right and go 18 steps.
-    Turn to the angle of 90 degrees to right and go forward.
-    Turn to the angle of 45 degrees to right and go 48 steps.
-    Then use lift.Turn to the angle of 45 degrees to left and go 50 metres.
-    
-    """.trimIndent()
+	You are on the first floor.
+	Turn left and go 12 steps.
+	Turn to the angle of 45 degrees to right and go 50 steps.
+	Turn to the angle of 45 degrees to right and go 18 steps.
+	Turn to the angle of 90 degrees to right and go forward.
+	Turn to the angle of 45 degrees to right and go 48 steps.
+	Then use lift.Turn to the angle of 45 degrees to left and go 50 metres.
+	
+	""".trimIndent()
 			)
 		} else {
 			val rand = Random()
@@ -104,20 +104,20 @@ fun main() {
 		Floors.GREY -> if (compareRooms(room, lab)) {
 			println(
 				"""
-    You are on the second floor.
-    Turn to the angle of 45 degrees to right and go forward.
-    Turn to the angle of 90 degrees to right and go forward.
-    Turn to the angle of 45 degrees to right and go forward.
-    Then use lift.
-    You are on the first floor.
-    Turn left and go 12 steps.
-    Turn to the angle of 45 degrees to right and go 50 steps.
-    Turn to the angle of 45 degrees to right and go 18 steps.
-    Turn to the angle of 90 degrees to right and go forward.
-    Turn to the angle of 45 degrees to right and go 48 steps.
-    Then use lift.Turn to the angle of 45 degrees to left and go 50 metres.
-    
-    """.trimIndent()
+	You are on the second floor.
+	Turn to the angle of 45 degrees to right and go forward.
+	Turn to the angle of 90 degrees to right and go forward.
+	Turn to the angle of 45 degrees to right and go forward.
+	Then use lift.
+	You are on the first floor.
+	Turn left and go 12 steps.
+	Turn to the angle of 45 degrees to right and go 50 steps.
+	Turn to the angle of 45 degrees to right and go 18 steps.
+	Turn to the angle of 90 degrees to right and go forward.
+	Turn to the angle of 45 degrees to right and go 48 steps.
+	Then use lift.Turn to the angle of 45 degrees to left and go 50 metres.
+	
+	""".trimIndent()
 			)
 		} else {
 			val rand = Random()
@@ -131,24 +131,24 @@ fun main() {
 		Floors.GREEN -> if (compareRooms(room, prison)) {
 			println(
 				"""
-    You are on the third floor.
-    Turn left and go 8 steps.
-    Then use lift.
-    You are on the second floor.
-    Turn to the angle of 45 degrees to right and go forward.
-    Turn to the angle of 90 degrees to right and go forward.
-    Turn to the angle of 45 degrees to right and go forward.
-    Then use lift.
-    You are on the first floor.
-    Turn left and go 12 steps.
-    Turn to the angle of 45 degrees to right and go 50 steps.
-    Turn to the angle of 45 degrees to right and go 18 steps.
-    Turn to the angle of 90 degrees to right and go forward.
-    Turn to the angle of 45 degrees to right and go 48 steps.
-    Then use lift.
-    Turn to the angle of 45 degrees to left and go 50 metres.
-    
-    """.trimIndent()
+	You are on the third floor.
+	Turn left and go 8 steps.
+	Then use lift.
+	You are on the second floor.
+	Turn to the angle of 45 degrees to right and go forward.
+	Turn to the angle of 90 degrees to right and go forward.
+	Turn to the angle of 45 degrees to right and go forward.
+	Then use lift.
+	You are on the first floor.
+	Turn left and go 12 steps.
+	Turn to the angle of 45 degrees to right and go 50 steps.
+	Turn to the angle of 45 degrees to right and go 18 steps.
+	Turn to the angle of 90 degrees to right and go forward.
+	Turn to the angle of 45 degrees to right and go 48 steps.
+	Then use lift.
+	Turn to the angle of 45 degrees to left and go 50 metres.
+	
+	""".trimIndent()
 			)
 		} else {
 			val rand = Random()
