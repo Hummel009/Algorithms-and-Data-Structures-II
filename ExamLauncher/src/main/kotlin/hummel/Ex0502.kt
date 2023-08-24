@@ -1,27 +1,29 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0502 {
-	private var scan = Scanner(System.`in`)
 	private var divider = 1000000007
 	private var base = 263
 
 	fun launch() {
-		val hashTable = HashTable(scan.nextInt())
-		val operationsCount = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val hashTable = HashTable(scanner.nextInt())
+		val operationsCount = scanner.nextInt()
 		for (i in 0 until operationsCount) {
-			val operation = scan.next()
+			val operation = scanner.next()
 			if (operation.startsWith("a")) {
-				hashTable.add(scan.next())
+				hashTable.add(scanner.next())
 			} else if (operation.startsWith("c")) {
-				println(hashTable.getValues(scan.nextInt()))
+				println(hashTable.getValues(scanner.nextInt()))
 			} else if (operation.startsWith("f")) {
-				println(hashTable.find(scan.next()))
+				println(hashTable.find(scanner.next()))
 			} else {
-				hashTable.delete(scan.next())
+				hashTable.delete(scanner.next())
 			}
 		}
+		scanner.close()
 	}
 
 	class HashTable(size: Int) {

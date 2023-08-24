@@ -1,27 +1,27 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0604 {
-	private var scan = Scanner(System.`in`)
-
 	fun launch() {
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val set = OnlineSet()
-		val n = scan.nextInt()
+		val n = scanner.nextInt()
 		for (i in 0 until n) {
-			when (scan.next()) {
+			when (scanner.next()) {
 				"+" -> {
-					val addNum = scan.nextInt()
+					val addNum = scanner.nextInt()
 					set.add(addNum)
 				}
 
 				"-" -> {
-					val removeNum = scan.nextInt()
+					val removeNum = scanner.nextInt()
 					set.remove(removeNum)
 				}
 
 				"?" -> {
-					val queryNum = scan.nextInt()
+					val queryNum = scanner.nextInt()
 					if (set.contains(queryNum)) {
 						println("Found")
 					} else {
@@ -30,14 +30,15 @@ object Ex0604 {
 				}
 
 				"s" -> {
-					val l = scan.nextInt()
-					val r = scan.nextInt()
+					val l = scanner.nextInt()
+					val r = scanner.nextInt()
 					println(set.sum(l, r))
 				}
 
 				else -> println("Invalid operation")
 			}
 		}
+		scanner.close()
 	}
 
 	class OnlineSet {

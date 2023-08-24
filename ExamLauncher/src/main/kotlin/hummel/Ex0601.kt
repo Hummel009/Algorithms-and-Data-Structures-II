@@ -1,5 +1,6 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0601 {
@@ -7,14 +8,15 @@ object Ex0601 {
 	private var inOrder = StringBuilder()
 	private var preOrder = StringBuilder()
 	private var postOrder = StringBuilder()
-	private var scan = Scanner(System.`in`)
 
 	fun launch() {
-		val vertexCount = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val vertexCount = scanner.nextInt()
 		nodes = arrayOfNulls(vertexCount)
 		for (i in 0 until vertexCount) {
-			nodes[i] = Node(scan.nextInt(), scan.nextInt(), scan.nextInt())
+			nodes[i] = Node(scanner.nextInt(), scanner.nextInt(), scanner.nextInt())
 		}
+		scanner.close()
 		walk(0)
 		println(inOrder.toString())
 		println(preOrder.toString())

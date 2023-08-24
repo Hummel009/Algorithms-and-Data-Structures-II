@@ -1,5 +1,6 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 fun main() {
@@ -22,7 +23,12 @@ fun main() {
 	functions["0604"] = Ex0604::launch
 	functions["0605"] = Ex0605::launch
 
-	val scan = Scanner(System.`in`)
-	val command = scan.nextLine()
-	functions[command]?.invoke()
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+
+	println("Enter the number of the lab:")
+	val command = scanner.nextLine()
+
+	scanner.close()
+
+	functions[command]?.invoke() ?: println("Command not found!")
 }

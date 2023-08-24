@@ -1,22 +1,23 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0302 {
-	private var scan = Scanner(System.`in`)
-
 	fun launch() {
-		val amogus = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val amogus = scanner.nextInt()
 		val heap = Heap(amogus)
-		val processesCount = scan.nextInt()
+		val processesCount = scanner.nextInt()
 		for (i in 0 until processesCount) {
 			val firstFree = heap.firstFree
 			System.out.printf("%s %s%n", (firstFree ?: return).number, firstFree.time)
-			val newTime = scan.nextLong()
+			val newTime = scanner.nextLong()
 			if (newTime != 0L) {
 				heap.changeTime(newTime)
 			}
 		}
+		scanner.close()
 	}
 
 	class Heap(private var size: Int) {
@@ -37,16 +38,16 @@ object Ex0302 {
 			get() = processors[0]
 
 		private fun siftDown(index: Int) {
-			var index = index
+			var shadIndex = index
 			var smallestIndex: Int
-			val top = processors[index]
-			while (index < size / 2) {
-				val leftChildIndex = 2 * index + 1
+			val top = processors[shadIndex]
+			while (shadIndex < size / 2) {
+				val leftChildIndex = 2 * shadIndex + 1
 				val rightChildIndex = leftChildIndex + 1
 				smallestIndex = if (rightChildIndex >= size) {
-					if ((processors[leftChildIndex] ?: return).time > (processors[index]
+					if ((processors[leftChildIndex] ?: return).time > (processors[shadIndex]
 							?: return).time
-					) index else leftChildIndex
+					) shadIndex else leftChildIndex
 				} else if ((processors[leftChildIndex] ?: return).time > (processors[rightChildIndex] ?: return).time) {
 					rightChildIndex
 				} else if ((processors[leftChildIndex] ?: return).time == (processors[rightChildIndex]
@@ -64,9 +65,9 @@ object Ex0302 {
 				) {
 					break
 				}
-				processors[index] = processors[smallestIndex]
-				index = smallestIndex
-				processors[index] = top
+				processors[shadIndex] = processors[smallestIndex]
+				shadIndex = smallestIndex
+				processors[shadIndex] = top
 			}
 		}
 	}

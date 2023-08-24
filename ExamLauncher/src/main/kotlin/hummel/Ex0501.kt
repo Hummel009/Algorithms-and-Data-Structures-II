@@ -1,23 +1,24 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0501 {
-	private var scan = Scanner(System.`in`)
-
 	fun launch() {
-		val operationCount = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val operationCount = scanner.nextInt()
 		val table = arrayOfNulls<String>(10000000)
 		for (i in 0 until operationCount) {
-			val operation = scan.next()
-			val number = scan.nextInt()
+			val operation = scanner.next()
+			val number = scanner.nextInt()
 			if (operation.startsWith("a")) {
-				table[number] = scan.next()
+				table[number] = scanner.next()
 			} else if (operation.startsWith("f")) {
 				println(if (table[number] == null) "not found" else table[number])
 			} else {
 				table[number] = null
 			}
 		}
+		scanner.close()
 	}
 }

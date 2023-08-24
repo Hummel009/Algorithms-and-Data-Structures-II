@@ -1,9 +1,9 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0603 {
-	private var scanner = Scanner(System.`in`)
 	private lateinit var nodes: Array<Node?>
 
 	private fun isTreeValid(index: Int, range: Range): Boolean {
@@ -30,6 +30,7 @@ object Ex0603 {
 	}
 
 	fun launch() {
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val vertexCount = scanner.nextInt()
 		if (vertexCount == 0) {
 			println("CORRECT")
@@ -41,6 +42,7 @@ object Ex0603 {
 			val range = Range(0, 0)
 			println(if (isTreeValid(0, range)) "CORRECT" else "INCORRECT")
 		}
+		scanner.close()
 	}
 
 	class Node(var value: Long, var left: Int, var right: Int)

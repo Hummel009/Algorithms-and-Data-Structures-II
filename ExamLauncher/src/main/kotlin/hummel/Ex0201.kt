@@ -1,12 +1,13 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0201 {
-	private var scan = Scanner(System.`in`)
-
 	fun launch() {
-		val bracket = scan.next().toCharArray()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val bracket = scanner.next().toCharArray()
+		scanner.close()
 		val stack = LinkedList<Char>()
 		val n = bracket.size
 		var unclosedBracket = 0

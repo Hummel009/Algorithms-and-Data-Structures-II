@@ -3,10 +3,10 @@ package hummel
 import java.io.BufferedWriter
 import java.io.IOException
 import java.io.OutputStreamWriter
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0503 {
-	private var scan = Scanner(System.`in`)
 	private var divider: Short = 10007
 	private var base: Short = 47
 	private var steps: Short = 6
@@ -52,8 +52,10 @@ object Ex0503 {
 	}
 
 	fun launch() {
-		val pattern = scan.next().toCharArray()
-		val text = scan.next().toCharArray()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val pattern = scanner.next().toCharArray()
+		val text = scanner.next().toCharArray()
+		scanner.close()
 		patternLength = pattern.size
 		fillPowers()
 		val patternHashCode = hashCode(pattern)

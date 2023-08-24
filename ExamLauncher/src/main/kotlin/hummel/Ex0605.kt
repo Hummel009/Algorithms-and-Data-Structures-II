@@ -1,11 +1,11 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0605 {
-	private var scanner = Scanner(System.`in`)
-
 	fun launch() {
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		println("Enter text:")
 		val text = scanner.nextLine()
 		println("Enter args count:")
@@ -20,6 +20,7 @@ object Ex0605 {
 			val res = rope.ropeText(from, until, instead)
 			println(res)
 		}
+		scanner.close()
 	}
 
 	class Rope(private var text: String) {

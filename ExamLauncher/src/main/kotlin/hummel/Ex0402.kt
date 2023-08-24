@@ -1,25 +1,26 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0402 {
-	var scan: Scanner = Scanner(System.`in`)
-
 	fun launch() {
-		val maxNumber = scan.nextInt()
-		val numberOfEqualities = scan.nextInt()
-		val numberOfInequalities = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val maxNumber = scanner.nextInt()
+		val numberOfEqualities = scanner.nextInt()
+		val numberOfInequalities = scanner.nextInt()
 		val set = Set(maxNumber)
 		var result = 1
 		for (i in 0 until numberOfEqualities) {
-			set.union(scan.nextInt() - 1, scan.nextInt() - 1)
+			set.union(scanner.nextInt() - 1, scanner.nextInt() - 1)
 		}
 		for (i in 0 until numberOfInequalities) {
-			if (set.check(scan.nextInt() - 1, scan.nextInt() - 1)) {
+			if (set.check(scanner.nextInt() - 1, scanner.nextInt() - 1)) {
 				result = 0
 				break
 			}
 		}
+		scanner.close()
 		println(result)
 	}
 

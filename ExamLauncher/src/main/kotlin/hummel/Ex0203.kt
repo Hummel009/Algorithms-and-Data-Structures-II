@@ -1,26 +1,27 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0203 {
 	private var time = 0
 	private var bufferSize = 0
 	private var buffer: Deque<Package>? = null
-	private var scan = Scanner(System.`in`)
 
 	fun launch() {
-		bufferSize = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		bufferSize = scanner.nextInt()
 		buffer = ArrayDeque(bufferSize)
-		when (val packageCount = scan.nextInt()) {
+		when (val packageCount = scanner.nextInt()) {
 			0 -> println()
-			1 -> println(scan.nextInt())
+			1 -> println(scanner.nextInt())
 			else -> {
 				for (i in 0 until packageCount) {
-					process(Package(scan.nextInt(), scan.nextInt()))
+					process(Package(scanner.nextInt(), scanner.nextInt()))
 				}
-				scan.close()
 			}
 		}
+		scanner.close()
 	}
 
 	private fun process(pack: Package) {

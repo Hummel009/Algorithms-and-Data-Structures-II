@@ -1,21 +1,22 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0401 {
-	private var scan = Scanner(System.`in`)
-
 	fun launch() {
-		val tablesCount = scan.nextInt()
-		val requestsCount = scan.nextInt()
+		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		val tablesCount = scanner.nextInt()
+		val requestsCount = scanner.nextInt()
 		val set = Set(tablesCount)
 		for (i in 0 until tablesCount) {
-			set.initSet(scan.nextInt(), i)
+			set.initSet(scanner.nextInt(), i)
 		}
 		for (i in 0 until requestsCount) {
-			set.union(scan.nextInt() - 1, scan.nextInt() - 1)
+			set.union(scanner.nextInt() - 1, scanner.nextInt() - 1)
 			println(set.maxRank)
 		}
+		scanner.close()
 	}
 
 	class Set(tablesCount: Int) {

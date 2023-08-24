@@ -1,13 +1,14 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 import kotlin.math.max
 
 fun main() {
 	// Ask user to enter number of nodes
-	print("Enter number of nodes: ")
-	val scan = Scanner(System.`in`)
-	val n = scan.nextIntSafe()
+	print("Enter number of nodes:")
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+	val n = scanner.nextIntSafe()
 
 	println()
 
@@ -18,8 +19,8 @@ fun main() {
 	for (i in adjMatrix.indices) {
 		for (j in adjMatrix[i].indices) {
 			if (i != j) {
-				print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
-				adjMatrix[i][j] = scan.nextIntSafe()
+				print("Write the weight for connection: ${i + 1} -> ${j + 1}:")
+				adjMatrix[i][j] = scanner.nextIntSafe()
 			}
 		}
 	}
@@ -42,10 +43,12 @@ fun main() {
 	println()
 
 	// Ask user to enter start and end nodes
-	print("Enter a way from: ")
-	val startNode = scan.nextIntSafeRange(adjMatrix.indices) - 1
-	print("Enter a way to: ")
-	val endNode = scan.nextIntSafeRange(adjMatrix.indices) - 1
+	print("Enter a way from:")
+	val startNode = scanner.nextIntSafeRange(adjMatrix.indices) - 1
+	print("Enter a way to:")
+	val endNode = scanner.nextIntSafeRange(adjMatrix.indices) - 1
+
+	scanner.close()
 
 	println()
 
@@ -166,7 +169,7 @@ fun Scanner.nextIntSafe(): Int {
 		try {
 			return nextLine().toInt()
 		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
+			print("Error! Enter the correct value:")
 			continue@loop
 		}
 	}
@@ -181,7 +184,7 @@ fun Scanner.nextIntSafeRange(diapason: IntRange): Int {
 			}
 			return int
 		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
+			print("Error! Enter the correct value:")
 			continue@loop
 		}
 	}

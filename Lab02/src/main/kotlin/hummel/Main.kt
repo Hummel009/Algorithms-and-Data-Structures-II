@@ -1,14 +1,15 @@
 package hummel
 
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 var list: MutableList<Item> = ArrayList()
 
 fun main() {
-	val scan = Scanner(System.`in`)
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 	printOptions()
 	sus@ while (true) {
-		when (scan.nextLine()) {
+		when (scanner.nextLine()) {
 			"add" -> addItem()
 			"edit" -> editItem()
 			"remove" -> removeItem()
@@ -18,6 +19,7 @@ fun main() {
 			"exit" -> break@sus
 		}
 	}
+	scanner.close()
 }
 
 private fun addItem() {
@@ -47,10 +49,10 @@ private fun editItem(item: Item) {
 	item.ids.clear()
 	item.subs.clear()
 	println("Enter the new ids of the old item.")
-	val scan = Scanner(System.`in`)
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 
 	while (true) {
-		val id = scan.nextIntSafe()
+		val id = scanner.nextIntSafe()
 		if (id == 0) {
 			break
 		}
@@ -59,16 +61,16 @@ private fun editItem(item: Item) {
 	item.ids.sort()
 	while (true) {
 		println("Has sub-item? (Yes/No)")
-		val read = scan.nextLine()
+		val read = scanner.nextLine()
 		if (read == "No") {
 			break
 		}
 		val ids = ArrayList<Int>()
 		println("Enter the name:")
-		val name = scan.nextLine()
+		val name = scanner.nextLine()
 		println("Enter the new ids:")
 		while (true) {
-			val id = scan.nextIntSafe()
+			val id = scanner.nextIntSafe()
 			if (id == 0) {
 				break
 			}
@@ -78,6 +80,7 @@ private fun editItem(item: Item) {
 		val sub = Item(name, ids)
 		item.subs.add(sub)
 	}
+	scanner.close()
 }
 
 private fun editItem() {
@@ -86,14 +89,14 @@ private fun editItem() {
 		println("$i. ${arr[i]}")
 	}
 	println("Enter the number of the old item.")
-	val scan = Scanner(System.`in`)
-	val id = scan.nextIntSafe()
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		editItem(item)
 	} else {
 		println("Wrong! Enter the sub-item name then.")
-		val subName = scan.nextLine()
+		val subName = scanner.nextLine()
 		for (item in list) {
 			for (sub in item.subs) {
 				if (sub.name == subName) {
@@ -102,6 +105,7 @@ private fun editItem() {
 			}
 		}
 	}
+	scanner.close()
 	showAllItems()
 }
 
@@ -116,14 +120,14 @@ private fun removeItem() {
 		println("$i. ${arr[i]}")
 	}
 	println("Enter the number of the removal item.")
-	val scan = Scanner(System.`in`)
-	val id = scan.nextIntSafe()
+	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		list.remove(item)
 	} else {
 		println("Wrong! Enter the sub-item name then.")
-		val subName = scan.nextLine()
+		val subName = scanner.nextLine()
 		for (item in list) {
 			for (sub in item.subs) {
 				if (sub.name == subName) {
@@ -132,6 +136,7 @@ private fun removeItem() {
 			}
 		}
 	}
+	scanner.close()
 	showAllItems()
 }
 
@@ -181,7 +186,7 @@ fun Scanner.nextIntSafe(): Int {
 		try {
 			return nextLine().toInt()
 		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
+			print("Error! Enter the correct value:")
 			continue@loop
 		}
 	}
