@@ -26,11 +26,6 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - name: Cache
-      uses: actions/cache@v1.2.1
-      with:
-        path: amogus
-        key: amogus
     - name: Build with Gradle
       working-directory: ./Lab01
       run: ./gradlew.bat build
@@ -44,11 +39,6 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - name: Cache
-      uses: actions/cache@v1.2.1
-      with:
-        path: amogus
-        key: amogus
     - name: Build with Gradle
       working-directory: ./Lab02
       run: ./gradlew.bat build
@@ -62,11 +52,6 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - name: Cache
-      uses: actions/cache@v1.2.1
-      with:
-        path: amogus
-        key: amogus
     - name: Build with Gradle
       working-directory: ./Lab03
       run: ./gradlew.bat build
@@ -80,11 +65,6 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - name: Cache
-      uses: actions/cache@v1.2.1
-      with:
-        path: amogus
-        key: amogus
     - name: Build with Gradle
       working-directory: ./Lab04
       run: ./gradlew.bat build
@@ -98,11 +78,6 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
-    - name: Cache
-      uses: actions/cache@v1.2.1
-      with:
-        path: amogus
-        key: amogus
     - name: Build with Gradle
       working-directory: ./ExamLauncher
       run: ./gradlew.bat build
