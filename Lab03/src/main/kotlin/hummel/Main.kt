@@ -198,7 +198,9 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 
 fun Scanner.nextIntSafe(): Int {
 	return try {
-		nextLine().toInt()
+		val str = nextLine()
+		val num = str.toInt()
+		num
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
 		nextIntSafe()

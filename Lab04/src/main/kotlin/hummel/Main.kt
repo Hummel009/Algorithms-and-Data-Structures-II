@@ -169,7 +169,9 @@ fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 
 fun Scanner.nextIntSafe(): Int {
 	return try {
-		nextLine().toInt()
+		val str = nextLine()
+		val num = str.toInt()
+		num
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
 		nextIntSafe()
@@ -178,13 +180,14 @@ fun Scanner.nextIntSafe(): Int {
 
 fun Scanner.nextIntSafeRange(diapason: IntRange): Int {
 	return try {
-		val int = this.nextLine().toInt()
-		if (int - 1 !in diapason) {
+		val str = nextLine()
+		val num = str.toInt()
+		if (num - 1 !in diapason) {
 			throw Exception()
 		}
-		int
+		num
 	} catch (e: Exception) {
-		print("Error! Enter the correct value:")
+		print("Error! Enter the correct value: ")
 		nextIntSafeRange(diapason)
 	}
 }

@@ -20,11 +20,11 @@ fun main() {
 		print("Enter the command: ")
 		val command = scanner.nextLine()
 
+		functions[command]?.invoke() ?: println("Unknown command!")
+
 		if ("exit" == command) {
 			break
 		}
-
-		functions[command]?.invoke() ?: println("Command not found!")
 	}
 	scanner.close()
 }
@@ -56,7 +56,6 @@ private fun editItem(item: Item) {
 	item.ids.clear()
 	item.subs.clear()
 	println("Enter the new ids of the old item:")
-
 	while (true) {
 		val id = scanner.nextIntSafe()
 		if (id == 0) {
@@ -180,7 +179,9 @@ class Item(
 
 fun Scanner.nextIntSafe(): Int {
 	return try {
-		nextLine().toInt()
+		val str = nextLine()
+		val num = str.toInt()
+		num
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
 		nextIntSafe()
