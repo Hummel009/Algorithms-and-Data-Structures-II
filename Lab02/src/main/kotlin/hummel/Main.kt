@@ -20,11 +20,11 @@ fun main() {
 		print("Enter the command: ")
 		val command = scanner.nextLine()
 
-		functions[command]?.invoke() ?: println("Unknown command!")
-
 		if ("exit" == command) {
 			break
 		}
+
+		functions[command]?.invoke() ?: println("Unknown command!")
 	}
 	scanner.close()
 }
