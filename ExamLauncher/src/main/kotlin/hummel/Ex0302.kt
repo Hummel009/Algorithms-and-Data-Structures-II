@@ -1,40 +1,29 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0302 {
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val amogus = scanner.nextInt()
 		val heap = Heap(amogus)
 		val processesCount = scanner.nextInt()
 		for (i in 0 until processesCount) {
 			val firstFree = heap.firstFree
-			System.out.printf("%s %s%n", (firstFree ?: return).number, firstFree.time)
+			System.out.printf("%s %s%n", firstFree.number, firstFree.time)
 			val newTime = scanner.nextLong()
 			if (newTime != 0L) {
 				heap.changeTime(newTime)
 			}
 		}
-		scanner.close()
 	}
 
 	class Heap(private var size: Int) {
-		private var processors: Array<Processor?> = arrayOfNulls(size)
-
-		init {
-			for (i in 0 until size) {
-				processors[i] = Processor(i, 0)
-			}
-		}
+		private val processors = Array(size) { i -> Processor(i, 0) }
 
 		fun changeTime(newTime: Long) {
-			(processors[0] ?: return).time += newTime
+			processors[0].time += newTime
 			siftDown(0)
 		}
 
-		val firstFree: Processor?
+		val firstFree: Processor
 			get() = processors[0]
 
 		private fun siftDown(index: Int) {
@@ -45,24 +34,15 @@ object Ex0302 {
 				val leftChildIndex = 2 * shadIndex + 1
 				val rightChildIndex = leftChildIndex + 1
 				smallestIndex = if (rightChildIndex >= size) {
-					if ((processors[leftChildIndex] ?: return).time > (processors[shadIndex]
-							?: return).time
-					) shadIndex else leftChildIndex
-				} else if ((processors[leftChildIndex] ?: return).time > (processors[rightChildIndex] ?: return).time) {
+					if (processors[leftChildIndex].time > processors[shadIndex].time) shadIndex else leftChildIndex
+				} else if (processors[leftChildIndex].time > processors[rightChildIndex].time) {
 					rightChildIndex
-				} else if ((processors[leftChildIndex] ?: return).time == (processors[rightChildIndex]
-						?: return).time
-				) {
-					if ((processors[leftChildIndex] ?: return).number > (processors[rightChildIndex]
-							?: return).number
-					) rightChildIndex else leftChildIndex
+				} else if (processors[leftChildIndex].time == processors[rightChildIndex].time) {
+					if (processors[leftChildIndex].number > processors[rightChildIndex].number) rightChildIndex else leftChildIndex
 				} else {
 					leftChildIndex
 				}
-				if ((top ?: return).time < (processors[smallestIndex]
-						?: return).time || top.time == (processors[smallestIndex]
-						?: return).time && top.number <= (processors[smallestIndex] ?: return).number
-				) {
+				if (top.time < processors[smallestIndex].time || top.time == processors[smallestIndex].time && top.number <= processors[smallestIndex].number) {
 					break
 				}
 				processors[shadIndex] = processors[smallestIndex]

@@ -1,11 +1,7 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0402 {
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val maxNumber = scanner.nextInt()
 		val numberOfEqualities = scanner.nextInt()
 		val numberOfInequalities = scanner.nextInt()
@@ -20,19 +16,11 @@ object Ex0402 {
 				break
 			}
 		}
-		scanner.close()
 		println(result)
 	}
 
 	class Set(size: Int) {
-		private var setArray: IntArray
-
-		init {
-			setArray = IntArray(size)
-			for (i in 0 until size) {
-				setArray[i] = i
-			}
-		}
+		private val setArray = IntArray(size) { it }
 
 		fun check(left: Int, right: Int): Boolean {
 			return setArray[find(left)] == setArray[find(right)]

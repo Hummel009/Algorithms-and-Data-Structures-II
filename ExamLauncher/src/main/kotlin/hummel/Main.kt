@@ -3,32 +3,37 @@ package hummel
 import java.nio.charset.StandardCharsets
 import java.util.*
 
+val scanner: Scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+
 fun main() {
-	val functions = HashMap<String, () -> Unit>()
-	functions["0201"] = Ex0201::launch
-	functions["0202"] = Ex0202::launch
-	functions["0203"] = Ex0203::launch
-	functions["0204"] = Ex0204::launch
-	functions["0205"] = Ex0205::launch
-	functions["0301"] = Ex0301::launch
-	functions["0302"] = Ex0302::launch
-	functions["0401"] = Ex0401::launch
-	functions["0402"] = Ex0402::launch
-	functions["0501"] = Ex0501::launch
-	functions["0502"] = Ex0502::launch
-	functions["0503"] = Ex0503::launch
-	functions["0601"] = Ex0601::launch
-	functions["0602"] = Ex0602::launch
-	functions["0603"] = Ex0603::launch
-	functions["0604"] = Ex0604::launch
-	functions["0605"] = Ex0605::launch
+	val functions = mapOf(
+		"0201" to Ex0201::launch,
+		"0202" to Ex0202::launch,
+		"0203" to Ex0203::launch,
+		"0204" to Ex0204::launch,
+		"0205" to Ex0205::launch,
+		"0301" to Ex0301::launch,
+		"0302" to Ex0302::launch,
+		"0401" to Ex0401::launch,
+		"0402" to Ex0402::launch,
+		"0501" to Ex0501::launch,
+		"0502" to Ex0502::launch,
+		"0503" to Ex0503::launch,
+		"0601" to Ex0601::launch,
+		"0602" to Ex0602::launch,
+		"0603" to Ex0603::launch,
+		"0604" to Ex0604::launch,
+		"0605" to Ex0605::launch
+	)
+	while (true) {
+		println("Enter the number of the lab:")
+		val command = scanner.nextLine()
 
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+		if ("exit" == command) {
+			break
+		}
 
-	println("Enter the number of the lab:")
-	val command = scanner.nextLine()
-
+		functions[command]?.invoke() ?: println("Command not found!")
+	}
 	scanner.close()
-
-	functions[command]?.invoke() ?: println("Command not found!")
 }

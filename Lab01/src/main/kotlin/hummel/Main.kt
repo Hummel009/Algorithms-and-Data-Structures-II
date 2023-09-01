@@ -20,57 +20,63 @@ fun main() {
 	println("─██████──────────██████─██████──██████─██████████████████─██████████████─")
 	println("─────────────────────────────────────────────────────────────────────────")
 
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
+	var color: String
+	var hasGlowing: String
+	var isGlowingDirect: String
+	var hasMedEnvironment: String
+	var floor: Floors
+	var roomType: RoomType
+	var windowType: WindowType
 
-	println("Enter the color of the floor (green, black, grey):")
-	var floor: Floors? = null
-	loop@ while (floor == null) {
-		try {
-			val input = scanner.nextLine().uppercase()
-			floor = Floors.valueOf(input)
-		} catch (e: Exception) {
-			print("Error! Enter the correct value:")
-			continue@loop
+	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use {
+		println("Enter the color of the floor (green, black, grey):")
+		loop@ while (true) {
+			try {
+				val input = it.nextLine().uppercase()
+				floor = Floors.valueOf(input)
+				break
+			} catch (e: Exception) {
+				print("Error! Enter the correct value:")
+				continue@loop
+			}
+		}
+
+		println("Enter the color of the room (green, black, grey):")
+		color = it.nextLine()
+
+		println("Enter if there is glowing in the room (true/false):")
+		hasGlowing = it.nextLine()
+
+		println("Enter if glowing is direct in the room (true/false):")
+		isGlowingDirect = it.nextLine()
+
+		println("Enter if there is med environment in the room (true/false):")
+		hasMedEnvironment = it.nextLine()
+
+		println("Enter the room type of the room:")
+		loop@ while (true) {
+			try {
+				val input = it.nextLine().uppercase()
+				roomType = RoomType.valueOf(input)
+				break
+			} catch (e: Exception) {
+				print("Error! Enter the correct value:")
+				continue@loop
+			}
+		}
+
+		println("Enter the window type of the room:")
+		loop@ while (true) {
+			try {
+				val input = it.nextLine().uppercase()
+				windowType = WindowType.valueOf(input)
+				break
+			} catch (e: Exception) {
+				print("Error! Enter the correct value:")
+				continue@loop
+			}
 		}
 	}
-
-	println("Enter the color of the room (green, black, grey):")
-	val color = scanner.nextLine()
-
-	println("Enter if there is glowing in the room (true/false):")
-	val hasGlowing = scanner.nextLine()
-
-	println("Enter if glowing is direct in the room (true/false):")
-	val isGlowingDirect = scanner.nextLine()
-
-	println("Enter if there is med environment in the room (true/false):")
-	val hasMedEnvironment = scanner.nextLine()
-
-	println("Enter the room type of the room:")
-	var roomType: RoomType? = null
-	loop@ while (roomType == null) {
-		try {
-			val input = scanner.nextLine().uppercase()
-			roomType = RoomType.valueOf(input)
-		} catch (e: Exception) {
-			print("Error! Enter the correct value:")
-			continue@loop
-		}
-	}
-
-	println("Enter the window type of the room:")
-	var windowType: WindowType? = null
-	loop@ while (windowType == null) {
-		try {
-			val input = scanner.nextLine().uppercase()
-			windowType = WindowType.valueOf(input)
-		} catch (e: Exception) {
-			print("Error! Enter the correct value:")
-			continue@loop
-		}
-	}
-
-	scanner.close()
 
 	val room = Room(color, hasGlowing, isGlowingDirect, hasMedEnvironment, roomType, windowType)
 

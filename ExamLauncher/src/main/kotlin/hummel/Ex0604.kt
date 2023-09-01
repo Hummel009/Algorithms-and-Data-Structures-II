@@ -1,11 +1,7 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0604 {
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val set = OnlineSet()
 		val n = scanner.nextInt()
 		for (i in 0 until n) {
@@ -38,12 +34,11 @@ object Ex0604 {
 				else -> println("Invalid operation")
 			}
 		}
-		scanner.close()
 	}
 
 	class OnlineSet {
-		private val set: HashSet<Int> = HashSet()
-		private var lastSum: Long = 0
+		private val set = HashSet<Int>()
+		private var lastSum = 0L
 
 		fun add(i: Int) {
 			val f = ((i + lastSum) % 1000000001).toInt()

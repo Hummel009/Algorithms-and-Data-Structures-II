@@ -1,6 +1,5 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0502 {
@@ -8,7 +7,6 @@ object Ex0502 {
 	private var base = 263
 
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val hashTable = HashTable(scanner.nextInt())
 		val operationsCount = scanner.nextInt()
 		for (i in 0 until operationsCount) {
@@ -23,11 +21,10 @@ object Ex0502 {
 				hashTable.delete(scanner.next())
 			}
 		}
-		scanner.close()
 	}
 
 	class HashTable(size: Int) {
-		private var table: Array<Words?> = arrayOfNulls(size)
+		private var table = arrayOfNulls<Words?>(size)
 
 		fun add(string: String) {
 			val hashCode = hashCode(string)
@@ -49,19 +46,15 @@ object Ex0502 {
 			if (table[hashCode] == null || table[hashCode]!!.isEmpty) {
 				return "no"
 			}
-			return if (table[hashCode]!!.contains(string)) {
-				"yes"
-			} else "no"
+			return if (table[hashCode]!!.contains(string)) "yes" else "no"
 		}
 
 		fun getValues(hashCode: Int): String {
-			return if (table[hashCode] == null || table[hashCode]!!.isEmpty) {
-				""
-			} else table[hashCode]!!.values
+			return if (table[hashCode] == null || table[hashCode]!!.isEmpty) "" else table[hashCode]!!.values
 		}
 
 		private fun hashCode(string: String): Int {
-			var hashCode: Long = 0
+			var hashCode = 0L
 			for ((i, ch) in string.toCharArray().withIndex()) {
 				hashCode = ((hashCode + ch.code.toLong() * pow(i)) % divider + divider) % divider
 			}
@@ -69,7 +62,7 @@ object Ex0502 {
 		}
 
 		private fun pow(pow: Int): Long {
-			var result: Long = 1
+			var result = 1L
 			for (i in 0 until pow) {
 				result = result * base % divider
 			}

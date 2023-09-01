@@ -1,8 +1,5 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0205 {
 	private fun getMaxValueIndex(values: IntArray, startPos: Int, endPos: Int): Int {
 		var maxValueIndex = startPos
@@ -13,14 +10,12 @@ object Ex0205 {
 	}
 
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val valuesCount = scanner.nextInt()
 		val values = IntArray(valuesCount)
 		for (i in 0 until valuesCount) {
 			values[i] = scanner.nextInt()
 		}
 		val windowSize = scanner.nextInt()
-		scanner.close()
 		if (valuesCount == windowSize) {
 			println(values[getMaxValueIndex(values, 0, values.size - 1)])
 		} else if (windowSize == 1) {

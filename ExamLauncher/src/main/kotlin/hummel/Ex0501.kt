@@ -1,11 +1,7 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0501 {
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val operationCount = scanner.nextInt()
 		val table = arrayOfNulls<String>(10000000)
 		for (i in 0 until operationCount) {
@@ -19,6 +15,5 @@ object Ex0501 {
 				table[number] = null
 			}
 		}
-		scanner.close()
 	}
 }

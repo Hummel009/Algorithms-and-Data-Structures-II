@@ -1,11 +1,7 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0401 {
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val tablesCount = scanner.nextInt()
 		val requestsCount = scanner.nextInt()
 		val set = Set(tablesCount)
@@ -16,18 +12,12 @@ object Ex0401 {
 			set.union(scanner.nextInt() - 1, scanner.nextInt() - 1)
 			println(set.maxRank)
 		}
-		scanner.close()
 	}
 
 	class Set(tablesCount: Int) {
-		private var rank: IntArray
-		private var setArray: IntArray
+		private var rank = IntArray(tablesCount)
+		private var setArray = IntArray(tablesCount)
 		var maxRank: Int = 0
-
-		init {
-			setArray = IntArray(tablesCount)
-			rank = IntArray(tablesCount)
-		}
 
 		private fun find(i: Int): Int {
 			if (i != setArray[i]) {

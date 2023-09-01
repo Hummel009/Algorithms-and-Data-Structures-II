@@ -1,13 +1,10 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 object Ex0301 {
 	private var size = 0
-	private lateinit var heap: IntArray
 	private var swapCounter = 0
 	private var sb = StringBuilder()
+	private lateinit var heap: IntArray
 
 	private fun fixHeap() {
 		for (i in size / 2 - 1 downTo 0) {
@@ -16,13 +13,11 @@ object Ex0301 {
 	}
 
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		size = scanner.nextInt()
 		heap = IntArray(size)
 		for (i in 0 until size) {
 			heap[i] = scanner.nextInt()
 		}
-		scanner.close()
 		fixHeap()
 		println(swapCounter)
 		if (swapCounter != 0) {

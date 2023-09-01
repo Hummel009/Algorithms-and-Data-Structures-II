@@ -4,20 +4,27 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 var list: MutableList<Item> = ArrayList()
+val scanner: Scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 
 fun main() {
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 	printOptions()
-	sus@ while (true) {
-		when (scanner.nextLine()) {
-			"add" -> addItem()
-			"edit" -> editItem()
-			"remove" -> removeItem()
-			"show" -> showAllItems()
-			"sort name" -> sortByName()
-			"sort ids" -> sortByIds()
-			"exit" -> break@sus
+	val functions = mapOf(
+		"add" to ::addItem,
+		"edit" to ::editItem,
+		"remove" to ::removeItem,
+		"show" to ::showAllItems,
+		"sort name" to ::sortByName,
+		"sort ids" to ::sortByIds,
+	)
+	while (true) {
+		println("Enter the command:")
+		val command = scanner.nextLine()
+
+		if ("exit" == command) {
+			break
 		}
+
+		functions[command]?.invoke() ?: println("Command not found!")
 	}
 	scanner.close()
 }
@@ -49,7 +56,6 @@ private fun editItem(item: Item) {
 	item.ids.clear()
 	item.subs.clear()
 	println("Enter the new ids of the old item.")
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 
 	while (true) {
 		val id = scanner.nextIntSafe()
@@ -80,7 +86,6 @@ private fun editItem(item: Item) {
 		val sub = Item(name, ids)
 		item.subs.add(sub)
 	}
-	scanner.close()
 }
 
 private fun editItem() {
@@ -89,7 +94,6 @@ private fun editItem() {
 		println("$i. ${arr[i]}")
 	}
 	println("Enter the number of the old item.")
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
@@ -105,7 +109,6 @@ private fun editItem() {
 			}
 		}
 	}
-	scanner.close()
 	showAllItems()
 }
 
@@ -120,7 +123,6 @@ private fun removeItem() {
 		println("$i. ${arr[i]}")
 	}
 	println("Enter the number of the removal item.")
-	val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
@@ -136,7 +138,6 @@ private fun removeItem() {
 			}
 		}
 	}
-	scanner.close()
 	showAllItems()
 }
 
@@ -165,11 +166,8 @@ private fun sortByName() {
 }
 
 class Item(
-	var name: String,
-	var ids: MutableList<Int>,
-	var subs: MutableList<Item> = emptyList<Item>().toMutableList()
+	var name: String, var ids: MutableList<Int>, var subs: MutableList<Item> = emptyList<Item>().toMutableList()
 ) {
-
 	override fun toString(): String {
 		if (subs.isEmpty()) {
 			return "$name: $ids, sub does not exist."
@@ -182,12 +180,10 @@ class Item(
 }
 
 fun Scanner.nextIntSafe(): Int {
-	loop@ while (true) {
-		try {
-			return nextLine().toInt()
-		} catch (e: Exception) {
-			print("Error! Enter the correct value:")
-			continue@loop
-		}
+	return try {
+		nextLine().toInt()
+	} catch (e: Exception) {
+		print("Error! Enter the correct value:")
+		nextIntSafe()
 	}
 }

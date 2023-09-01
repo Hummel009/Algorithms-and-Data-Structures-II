@@ -1,15 +1,13 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0203 {
 	private var time = 0
 	private var bufferSize = 0
-	private var buffer: Deque<Package>? = null
+	private lateinit var buffer: Deque<Package>
 
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		bufferSize = scanner.nextInt()
 		buffer = ArrayDeque(bufferSize)
 		when (val packageCount = scanner.nextInt()) {
@@ -21,11 +19,10 @@ object Ex0203 {
 				}
 			}
 		}
-		scanner.close()
 	}
 
 	private fun process(pack: Package) {
-		if ((buffer ?: return).size < bufferSize) {
+		if (buffer.size < bufferSize) {
 			println(time.coerceAtLeast(pack.average))
 			if (pack.average >= time) {
 				time = pack.endTime
@@ -33,17 +30,17 @@ object Ex0203 {
 				time += pack.duration
 			}
 			pack.end = time
-			(buffer ?: return).add(pack)
-		} else if (pack.average >= (buffer ?: return).first.end) {
+			buffer.add(pack)
+		} else if (pack.average >= buffer.first.end) {
 			println(time.coerceAtLeast(pack.average))
-			if (time > (buffer ?: return).last.end) {
+			if (time > buffer.last.end) {
 				time += pack.duration
 			} else {
-				time = (buffer ?: return).last.end + pack.duration
+				time = buffer.last.end + pack.duration
 			}
-			(buffer ?: return).removeFirst()
+			buffer.removeFirst()
 			pack.end = time
-			(buffer ?: return).add(pack)
+			buffer.add(pack)
 		} else {
 			println("-1")
 		}

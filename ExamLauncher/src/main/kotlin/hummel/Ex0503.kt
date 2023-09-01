@@ -1,9 +1,5 @@
 package hummel
 
-import java.io.BufferedWriter
-import java.io.IOException
-import java.io.OutputStreamWriter
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 object Ex0503 {
@@ -52,15 +48,12 @@ object Ex0503 {
 	}
 
 	fun launch() {
-		val scanner = Scanner(System.`in`, StandardCharsets.UTF_8.name())
 		val pattern = scanner.next().toCharArray()
 		val text = scanner.next().toCharArray()
-		scanner.close()
 		patternLength = pattern.size
 		fillPowers()
 		val patternHashCode = hashCode(pattern)
 		val matches = LinkedList<Int>()
-		val writer = BufferedWriter(OutputStreamWriter(System.out))
 		for (i in text.size - pattern.size downTo 0) {
 			subStringHashCode = hashCode(text, i)
 			if (patternHashCode == subStringHashCode) {
@@ -87,16 +80,7 @@ object Ex0503 {
 			}
 		}
 		for (match in matches) {
-			try {
-				writer.write(String.format("%s ", match.toString()))
-			} catch (e: IOException) {
-				e.printStackTrace()
-			}
-		}
-		try {
-			writer.close()
-		} catch (e: IOException) {
-			e.printStackTrace()
+			println("$match ")
 		}
 	}
 }
