@@ -26,7 +26,7 @@ fun main() {
 		"0605" to Ex0605::launch
 	)
 	while (true) {
-		println("Enter the number of the lab:")
+		print("Enter the number of the lab: ")
 		val command = scanner.nextLine()
 
 		if ("exit" == command) {

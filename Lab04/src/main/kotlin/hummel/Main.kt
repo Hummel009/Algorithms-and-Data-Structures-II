@@ -11,7 +11,7 @@ fun main() {
 	var endNode: Int
 	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use {
 		// Ask user to enter number of nodes
-		print("Enter number of nodes:")
+		print("Enter number of nodes: ")
 		n = it.nextIntSafe()
 
 		println()
@@ -23,7 +23,7 @@ fun main() {
 		for (i in adjMatrix.indices) {
 			for (j in adjMatrix[i].indices) {
 				if (i != j) {
-					print("Write the weight for connection: ${i + 1} -> ${j + 1}:")
+					print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
 					adjMatrix[i][j] = it.nextIntSafe()
 				}
 			}
@@ -47,9 +47,9 @@ fun main() {
 		println()
 
 		// Ask user to enter start and end nodes
-		print("Enter a way from:")
+		print("Enter a way from: ")
 		startNode = it.nextIntSafeRange(adjMatrix.indices) - 1
-		print("Enter a way to:")
+		print("Enter a way to: ")
 		endNode = it.nextIntSafeRange(adjMatrix.indices) - 1
 	}
 
@@ -171,7 +171,7 @@ fun Scanner.nextIntSafe(): Int {
 	return try {
 		nextLine().toInt()
 	} catch (e: Exception) {
-		print("Error! Enter the correct value:")
+		print("Error! Enter the correct value: ")
 		nextIntSafe()
 	}
 }

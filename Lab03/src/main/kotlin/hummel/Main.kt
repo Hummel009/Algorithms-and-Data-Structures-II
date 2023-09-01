@@ -8,9 +8,9 @@ fun main() {
 	val arr: IntArray
 	var removal: Int
 	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use { scanner ->
-		print("ENTER NUMBERS (example: 45 10 7 12 90 50):")
+		println("ENTER NUMBERS (example: 45 10 7 12 90 50):")
 		arr = IntArray(6) { scanner.nextIntSafe() }
-		print("ENTER REMOVAL (example: 7):")
+		print("ENTER REMOVAL (example: 7): ")
 		removal = scanner.nextIntSafe()
 	}
 	val bst = ADS03(arr, removal)
@@ -200,7 +200,7 @@ fun Scanner.nextIntSafe(): Int {
 	return try {
 		nextLine().toInt()
 	} catch (e: Exception) {
-		print("Error! Enter the correct value:")
+		print("Error! Enter the correct value: ")
 		nextIntSafe()
 	}
 }

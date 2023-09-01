@@ -17,7 +17,7 @@ fun main() {
 		"sort ids" to ::sortByIds,
 	)
 	while (true) {
-		println("Enter the command:")
+		print("Enter the command: ")
 		val command = scanner.nextLine()
 
 		if ("exit" == command) {
@@ -55,7 +55,7 @@ private fun addItem() {
 private fun editItem(item: Item) {
 	item.ids.clear()
 	item.subs.clear()
-	println("Enter the new ids of the old item.")
+	println("Enter the new ids of the old item:")
 
 	while (true) {
 		val id = scanner.nextIntSafe()
@@ -66,13 +66,13 @@ private fun editItem(item: Item) {
 	}
 	item.ids.sort()
 	while (true) {
-		println("Has sub-item? (Yes/No)")
+		print("Has sub-item? [Yes/No]: ")
 		val read = scanner.nextLine()
 		if (read == "No") {
 			break
 		}
 		val ids = ArrayList<Int>()
-		println("Enter the name:")
+		print("Enter the name: ")
 		val name = scanner.nextLine()
 		println("Enter the new ids:")
 		while (true) {
@@ -93,13 +93,13 @@ private fun editItem() {
 	for (i in arr.indices) {
 		println("$i. ${arr[i]}")
 	}
-	println("Enter the number of the old item.")
+	print("Enter the number of the old item: ")
 	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		editItem(item)
 	} else {
-		println("Wrong! Enter the sub-item name then.")
+		print("Wrong! Enter the sub-item name then: ")
 		val subName = scanner.nextLine()
 		for (item in list) {
 			for (sub in item.subs) {
@@ -113,8 +113,7 @@ private fun editItem() {
 }
 
 fun printOptions() {
-	println("Available functions:")
-	println("add, edit, show, remove, exit, sort name, sort item")
+	println("Available functions: add, edit, show, remove, exit, sort name, sort ids")
 }
 
 private fun removeItem() {
@@ -122,13 +121,13 @@ private fun removeItem() {
 	for (i in arr.indices) {
 		println("$i. ${arr[i]}")
 	}
-	println("Enter the number of the removal item.")
+	print("Enter the number of the removal item: ")
 	val id = scanner.nextIntSafe()
 	if (id in arr.indices) {
 		val item = arr[id]
 		list.remove(item)
 	} else {
-		println("Wrong! Enter the sub-item name then.")
+		print("Wrong! Enter the sub-item name then: ")
 		val subName = scanner.nextLine()
 		for (item in list) {
 			for (sub in item.subs) {
@@ -148,7 +147,7 @@ private fun showAllItems() {
 }
 
 private fun sortByIds() {
-	val comparator = Comparator.comparing { o1: Item -> o1.ids[0] }
+	val comparator = Comparator.comparing { item: Item -> item.ids[0] }
 	for (item in list) {
 		item.subs.sortWith(comparator)
 	}
@@ -157,7 +156,7 @@ private fun sortByIds() {
 }
 
 private fun sortByName() {
-	val comparator = Comparator.comparing { o1: Item -> o1.name }
+	val comparator = Comparator.comparing { item: Item -> item.name }
 	list.sortWith(comparator)
 	for (item in list) {
 		item.subs.sortWith(comparator)
@@ -183,7 +182,7 @@ fun Scanner.nextIntSafe(): Int {
 	return try {
 		nextLine().toInt()
 	} catch (e: Exception) {
-		print("Error! Enter the correct value:")
+		print("Error! Enter the correct value: ")
 		nextIntSafe()
 	}
 }
