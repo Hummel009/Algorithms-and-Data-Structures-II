@@ -2,7 +2,6 @@ package hummel
 
 import hummel.Room.RoomType
 import hummel.Room.WindowType
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 fun main() {
@@ -20,61 +19,55 @@ fun main() {
 	println("─██████──────────██████─██████──██████─██████████████████─██████████████─")
 	println("─────────────────────────────────────────────────────────────────────────")
 
-	var color: String
-	var hasGlowing: String
-	var isGlowingDirect: String
-	var hasMedEnvironment: String
 	var floor: Floors
 	var roomType: RoomType
 	var windowType: WindowType
 
-	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use {
-		print("Enter the color of the floor (green, black, grey): ")
-		loop@ while (true) {
-			try {
-				val input = it.nextLine().uppercase()
-				floor = Floors.valueOf(input)
-				break
-			} catch (e: Exception) {
-				print("Error! Enter the correct value: ")
-				continue@loop
-			}
+	print("Enter the color of the floor (green, black, grey): ")
+	loop@ while (true) {
+		try {
+			val input = readln().uppercase()
+			floor = Floors.valueOf(input)
+			break
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
 		}
+	}
 
-		print("Enter the color of the room (green, black, grey): ")
-		color = it.nextLine()
+	print("Enter the color of the room (green, black, grey): ")
+	val color = readln()
 
-		print("Enter if there is glowing in the room (true/false): ")
-		hasGlowing = it.nextLine()
+	print("Enter if there is glowing in the room (true/false): ")
+	val hasGlowing = readln()
 
-		print("Enter if glowing is direct in the room (true/false): ")
-		isGlowingDirect = it.nextLine()
+	print("Enter if glowing is direct in the room (true/false): ")
+	val isGlowingDirect = readln()
 
-		print("Enter if there is med environment in the room (true/false): ")
-		hasMedEnvironment = it.nextLine()
+	print("Enter if there is med environment in the room (true/false): ")
+	val hasMedEnvironment = readln()
 
-		print("Enter the room type of the room: ")
-		loop@ while (true) {
-			try {
-				val input = it.nextLine().uppercase()
-				roomType = RoomType.valueOf(input)
-				break
-			} catch (e: Exception) {
-				print("Error! Enter the correct value: ")
-				continue@loop
-			}
+	print("Enter the room type of the room: ")
+	loop@ while (true) {
+		try {
+			val input = readln().uppercase()
+			roomType = RoomType.valueOf(input)
+			break
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
 		}
+	}
 
-		print("Enter the window type of the room: ")
-		loop@ while (true) {
-			try {
-				val input = it.nextLine().uppercase()
-				windowType = WindowType.valueOf(input)
-				break
-			} catch (e: Exception) {
-				print("Error! Enter the correct value: ")
-				continue@loop
-			}
+	print("Enter the window type of the room: ")
+	loop@ while (true) {
+		try {
+			val input = readln().uppercase()
+			windowType = WindowType.valueOf(input)
+			break
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+			continue@loop
 		}
 	}
 

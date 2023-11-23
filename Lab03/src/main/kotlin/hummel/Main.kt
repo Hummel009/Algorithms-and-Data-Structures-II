@@ -1,18 +1,11 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 
 fun main() {
-	val arr: IntArray
-	var removal: Int
-	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use { scanner ->
-		println("ENTER NUMBERS (example: 45 10 7 12 90 50):")
-		arr = IntArray(6) { scanner.nextIntSafe() }
-		print("ENTER REMOVAL (example: 7): ")
-		removal = scanner.nextIntSafe()
-	}
+	println("ENTER NUMBERS (example: 45 10 7 12 90 50):")
+	val arr = IntArray(6) { readIntSafe() }
+	print("ENTER REMOVAL (example: 7): ")
+	val removal = readIntSafe()
 	val bst = ADS03(arr, removal)
 	print("START TREE:")
 	bst.print()
@@ -196,13 +189,11 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 }
 
-fun Scanner.nextIntSafe(): Int {
+fun readIntSafe(): Int {
 	return try {
-		val str = nextLine()
-		val num = str.toInt()
-		num
+		readln().toInt()
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
-		nextIntSafe()
+		readIntSafe()
 	}
 }

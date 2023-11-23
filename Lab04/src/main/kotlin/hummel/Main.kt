@@ -1,57 +1,48 @@
 package hummel
 
-import java.nio.charset.StandardCharsets
 import java.util.*
 import kotlin.math.max
 
 fun main() {
-	var n: Int
-	var adjMatrix: Array<IntArray>
-	var startNode: Int
-	var endNode: Int
-	Scanner(System.`in`, StandardCharsets.UTF_8.name()).use {
-		// Ask user to enter number of nodes
-		print("Enter number of nodes: ")
-		n = it.nextIntSafe()
+	// Ask user to enter number of nodes
+	print("Enter number of nodes: ")
+	val n = readIntSafe()
 
-		println()
+	println()
 
-		// Initialize adjacency matrix for graph
-		adjMatrix = Array(n) { IntArray(n) }
-
-		// Ask user to enter weights for every connection between every node
-		for (i in adjMatrix.indices) {
-			for (j in adjMatrix[i].indices) {
-				if (i != j) {
-					print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
-					adjMatrix[i][j] = it.nextIntSafe()
-				}
+	val adjMatrix = Array(n) { i ->
+		IntArray(n) { j ->
+			if (i != j) {
+				print("Write the weight for connection: ${i + 1} -> ${j + 1}: ")
+				readIntSafe()
+			} else {
+				0
 			}
 		}
-		println()
-
-		// Print distances in graph as a table
-		println("Adjustment matrix:")
-		print("\n |")
-		for (k in adjMatrix.indices) {
-			System.out.printf("__%d_|", k + 1)
-		}
-		println()
-		for (i in adjMatrix.indices) {
-			print("${i + 1}|")
-			for (j in adjMatrix.indices) {
-				print(" ${adjMatrix[i][j].toString().padStart(2, ' ')} |")
-			}
-			println()
-		}
-		println()
-
-		// Ask user to enter start and end nodes
-		print("Enter a way from: ")
-		startNode = it.nextIntSafeRange(adjMatrix.indices) - 1
-		print("Enter a way to: ")
-		endNode = it.nextIntSafeRange(adjMatrix.indices) - 1
 	}
+	println()
+
+	// Print distances in graph as a table
+	println("Adjustment matrix:")
+	print("\n |")
+	for (k in adjMatrix.indices) {
+		System.out.printf("__%d_|", k + 1)
+	}
+	println()
+	for (i in adjMatrix.indices) {
+		print("${i + 1}|")
+		for (j in adjMatrix.indices) {
+			print(" ${adjMatrix[i][j].toString().padStart(2, ' ')} |")
+		}
+		println()
+	}
+	println()
+
+	// Ask user to enter start and end nodes
+	print("Enter a way from: ")
+	val startNode = readIntSafeRange(adjMatrix.indices) - 1
+	print("Enter a way to: ")
+	val endNode = readIntSafeRange(adjMatrix.indices) - 1
 
 	println()
 
@@ -167,27 +158,24 @@ fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 	}
 }
 
-fun Scanner.nextIntSafe(): Int {
+fun readIntSafe(): Int {
 	return try {
-		val str = nextLine()
-		val num = str.toInt()
-		num
+		readln().toInt()
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
-		nextIntSafe()
+		readIntSafe()
 	}
 }
 
-fun Scanner.nextIntSafeRange(diapason: IntRange): Int {
+fun readIntSafeRange(diapason: IntRange): Int {
 	return try {
-		val str = nextLine()
-		val num = str.toInt()
+		val num = readln().toInt()
 		if (num - 1 !in diapason) {
 			throw Exception()
 		}
 		num
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
-		nextIntSafeRange(diapason)
+		readIntSafeRange(diapason)
 	}
 }
