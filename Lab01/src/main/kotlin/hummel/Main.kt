@@ -99,7 +99,14 @@ fun main() {
 			val left1 = rand.nextInt(20) + 20
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
-			println("You are on the second floor.\nTurn left and go $left1 steps.\nThen turn right and go $right steps.\nTurn left and go $left2 steps.\nThen use lift.\n")
+			println(
+				"""You are on the second floor.
+				Turn left and go $left1 steps.
+				Then turn right and go $right steps.
+				Turn left and go $left2 steps.
+				Then use lift.
+				""".trimIndent()
+			)
 			drawAsAMatrix(left1, right, left2)
 		}
 
@@ -125,7 +132,14 @@ fun main() {
 			val left1 = rand.nextInt(20) + 20
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
-			println("You are on the second floor.\nTurn left and go $left1 steps.\nThen turn right and go $right steps.\nTurn left and go $left2 steps.\nThen use lift.\n")
+			println(
+				"""You are on the second floor.
+				Turn left and go $left1 steps.
+				Then turn right and go $right steps.
+				Turn left and go $left2 steps.
+				Then use lift.
+				""".trimIndent()
+			)
 			drawAsAMatrix(left1, right, left2)
 		}
 
@@ -155,7 +169,14 @@ fun main() {
 			val left1 = rand.nextInt(20) + 20
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
-			println("You are on the second floor.\nTurn left and go $left1 steps.\nThen turn right and go $right steps.\nTurn left and go $left2 steps.\nThen use lift.\n")
+			println(
+				"""You are on the second floor.
+				Turn left and go $left1 steps.
+				Then turn right and go $right steps.
+				Turn left and go $left2 steps.
+				Then use lift.
+				""".trimIndent()
+			)
 			drawAsAMatrix(left1, right, left2)
 		}
 	}
