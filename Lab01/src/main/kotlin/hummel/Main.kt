@@ -82,7 +82,7 @@ fun main() {
 	println("|=======================================|")
 	println()
 	when (floor) {
-		Floors.BLACK -> if (compareRooms(room, blackRoom)) {
+		Floors.BLACK -> if (room == blackRoom) {
 			println(
 				"""
 				You are on the first floor.
@@ -110,7 +110,7 @@ fun main() {
 			drawAsAMatrix(left1, right, left2)
 		}
 
-		Floors.GREY -> if (compareRooms(room, lab)) {
+		Floors.GREY -> if (room == lab) {
 			println(
 				"""
 				You are on the second floor.
@@ -143,7 +143,7 @@ fun main() {
 			drawAsAMatrix(left1, right, left2)
 		}
 
-		Floors.GREEN -> if (compareRooms(room, prison)) {
+		Floors.GREEN -> if (room == prison) {
 			println(
 				"""
 				You are on the third floor.
@@ -180,10 +180,6 @@ fun main() {
 			drawAsAMatrix(left1, right, left2)
 		}
 	}
-}
-
-fun compareRooms(room1: Room, room2: Room): Boolean {
-	return room1.isGlowingDirect == room2.isGlowingDirect && room1.color == room2.color && room1.hasGlowing == room2.hasGlowing && room1.hasMedEnvironment == room2.hasMedEnvironment && room1.roomType == room2.roomType && room1.windowType == room2.windowType
 }
 
 fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
@@ -228,7 +224,7 @@ enum class Floors {
 	BLACK, GREY, GREEN;
 }
 
-class Room(
+data class Room(
 	var color: String,
 	var hasGlowing: String,
 	var isGlowingDirect: String,

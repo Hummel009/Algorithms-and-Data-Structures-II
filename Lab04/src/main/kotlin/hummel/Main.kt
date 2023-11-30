@@ -32,7 +32,7 @@ fun main() {
 	for (i in adjMatrix.indices) {
 		print("${i + 1}|")
 		for (j in adjMatrix.indices) {
-			print(" ${adjMatrix[i][j].toString().padStart(2, ' ')} |")
+			print(" ${"${adjMatrix[i][j]}".padStart(2, ' ')} |")
 		}
 		println()
 	}
@@ -57,10 +57,7 @@ fun main() {
 
 	// Print all ways from start node to end node
 	println("Ways from node $startNode to node $endNode:")
-	for (way in ways) {
-		val nodeValues = way.map { node -> node + 1 }
-		println(nodeValues.joinToString(" -> "))
-	}
+	ways.asSequence().map { it.map { node -> node + 1 } }.forEach { println(it.joinToString(" -> ")) }
 	println()
 
 	// Calculate max and min ways from start node to end node
@@ -91,26 +88,9 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 	for (i in 0 until numVertices) {
 		var maxDist = Int.MIN_VALUE
 
-		for (j in 0 until numVertices) {
-			if (i == j) {
-				continue
-			}
+		(0 until numVertices).asSequence().filter { i != it }.forEach { maxDist = max(maxDist, distances[i][it]) }
 
-			maxDist = max(maxDist, distances[i][j])
-		}
-
-		var isCenter = true
-
-		for (j in 0 until numVertices) {
-			if (i == j) {
-				continue
-			}
-
-			if (distances[i][j] > maxDist) {
-				isCenter = false
-				break
-			}
-		}
+		val isCenter = (0 until numVertices).none { i != it && distances[i][it] > maxDist }
 
 		if (isCenter) {
 			centers.add(i)
