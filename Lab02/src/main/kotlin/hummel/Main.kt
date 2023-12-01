@@ -94,7 +94,7 @@ object Launcher {
 
 	private fun editItem() {
 		val arr = list.toTypedArray()
-		arr.indices.forEach { println("$it. ${arr[it]}") }
+		arr.indices.forEachIndexed { i, item -> println("$i. $item") }
 		print("Enter the number of the old item: ")
 		val id = readIntSafe()
 		if (id in arr.indices) {
@@ -112,7 +112,7 @@ object Launcher {
 
 	private fun removeItem() {
 		val arr = list.toTypedArray()
-		arr.indices.forEach { println("$it. ${arr[it]}") }
+		arr.indices.forEachIndexed { i, item -> println("$i. $item") }
 		print("Enter the number of the removal item: ")
 		val id = readIntSafe()
 		if (id in arr.indices) {
@@ -134,21 +134,21 @@ object Launcher {
 
 	private fun sortByIds() {
 		val comparator = Comparator.comparing { item: Item -> item.ids[0] }
-		list.forEach { item -> item.subs.sortWith(comparator) }
 		list.sortWith(comparator)
+		list.forEach { it.subs.sortWith(comparator) }
 		showAllItems()
 	}
 
 	private fun sortByName() {
 		val comparator = Comparator.comparing { item: Item -> item.name }
-		list.forEach { item -> item.subs.sortWith(comparator) }
 		list.sortWith(comparator)
+		list.forEach { it.subs.sortWith(comparator) }
 		showAllItems()
 	}
 }
 
 class Item(
-	var name: String, var ids: MutableList<Int>, var subs: MutableList<Item> = emptyList<Item>().toMutableList()
+	var name: String, var ids: MutableList<Int>, var subs: MutableList<Item> = mutableListOf()
 ) {
 	override fun toString(): String {
 		if (subs.isEmpty()) {

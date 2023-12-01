@@ -25,7 +25,7 @@ fun main() {
 	// Print distances in graph as a table
 	println("Adjustment matrix:")
 	println("\n |${adjMatrix.indices.joinToString("|") { "_${it + 1}_" }}")
-	adjMatrix.indices.forEach { i -> println("${i + 1}| " + adjMatrix[i].joinToString(" | ")) }
+	adjMatrix.forEachIndexed { i, item -> println("${i + 1}| " + item.joinToString(" | ")) }
 	println()
 
 	// Ask user to enter start and end nodes
@@ -73,7 +73,7 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 	val numVertices = distances.size
 	val centers = mutableSetOf<Int>()
 
-	for (i in 0 until numVertices) {
+	(0 until numVertices).forEach { i ->
 		var maxDist = Int.MIN_VALUE
 
 		(0 until numVertices).filter { i != it }.forEach { maxDist = max(maxDist, distances[i][it]) }
