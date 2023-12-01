@@ -25,9 +25,7 @@ fun main() {
 	// Print distances in graph as a table
 	println("Adjustment matrix:")
 	println("\n |${adjMatrix.indices.joinToString("|") { "_${it + 1}_" }}")
-	for (i in adjMatrix.indices) {
-		println("${i + 1}| " + adjMatrix[i].joinToString(" | "))
-	}
+	adjMatrix.indices.forEach { i -> println("${i + 1}| " + adjMatrix[i].joinToString(" | ")) }
 	println()
 
 	// Ask user to enter start and end nodes
@@ -49,7 +47,7 @@ fun main() {
 
 	// Print all ways from start node to end node
 	println("Ways from node $startNode to node $endNode:")
-	ways.asSequence().map { it.map { node -> node + 1 } }.forEach { println(it.joinToString(" -> ")) }
+	ways.map { it.map { node -> node + 1 } }.forEach { println(it.joinToString(" -> ")) }
 	println()
 
 	// Calculate max and min ways from start node to end node
@@ -65,9 +63,7 @@ fun main() {
 
 	// Calculate graph center
 	val distances = Array(n) { IntArray(n) { Int.MAX_VALUE } }
-	for (i in 0 until n) {
-		bfs(i, adjMatrix, distances)
-	}
+	(0 until n).forEach { bfs(it, adjMatrix, distances) }
 
 	val centers = getCenters(distances).map { it + 1 }
 	println("Centers: $centers")
@@ -80,7 +76,7 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 	for (i in 0 until numVertices) {
 		var maxDist = Int.MIN_VALUE
 
-		(0 until numVertices).asSequence().filter { i != it }.forEach { maxDist = max(maxDist, distances[i][it]) }
+		(0 until numVertices).filter { i != it }.forEach { maxDist = max(maxDist, distances[i][it]) }
 
 		val isCenter = (0 until numVertices).none { i != it && distances[i][it] > maxDist }
 
@@ -139,15 +135,15 @@ fun readIntSafe(): Int {
 	}
 }
 
-fun readIntSafeRange(diapason: IntRange): Int {
+fun readIntSafeRange(range: IntRange): Int {
 	return try {
 		val num = readln().toInt()
-		if (num - 1 !in diapason) {
+		if (num - 1 !in range) {
 			throw Exception()
 		}
 		num
 	} catch (e: Exception) {
 		print("Error! Enter the correct value: ")
-		readIntSafeRange(diapason)
+		readIntSafeRange(range)
 	}
 }

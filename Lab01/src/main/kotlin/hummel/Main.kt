@@ -204,12 +204,7 @@ fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	println("|=======================================|")
 	println()
 	println("==========================")
-	for (row in matrix) {
-		for (col in row) {
-			print(col)
-		}
-		println()
-	}
+	matrix.forEach { row -> row.forEach { print(it) }; println() }
 	println("==========================")
 }
 

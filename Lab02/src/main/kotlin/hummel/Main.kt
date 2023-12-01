@@ -94,9 +94,7 @@ object Launcher {
 
 	private fun editItem() {
 		val arr = list.toTypedArray()
-		for (i in arr.indices) {
-			println("$i. ${arr[i]}")
-		}
+		arr.indices.forEach { println("$it. ${arr[it]}") }
 		print("Enter the number of the old item: ")
 		val id = readIntSafe()
 		if (id in arr.indices) {
@@ -105,18 +103,14 @@ object Launcher {
 		} else {
 			print("Wrong! Enter the sub-item name then: ")
 			val subName = readln()
-			for (item in list) {
-				item.subs.asSequence().filter { it.name == subName }.forEach { editItem(it) }
-			}
+			list.forEach { item -> item.subs.filter { it.name == subName }.forEach { editItem(it) } }
 		}
 		showAllItems()
 	}
 
 	private fun removeItem() {
 		val arr = list.toTypedArray()
-		for (i in arr.indices) {
-			println("$i. ${arr[i]}")
-		}
+		arr.indices.forEach { println("$it. ${arr[it]}") }
 		print("Enter the number of the removal item: ")
 		val id = readIntSafe()
 		if (id in arr.indices) {
@@ -125,34 +119,26 @@ object Launcher {
 		} else {
 			print("Wrong! Enter the sub-item name then: ")
 			val subName = readln()
-			for (item in list) {
-				item.subs.asSequence().filter { it.name == subName }.forEach { item.subs.remove(it) }
-			}
+			list.forEach { item -> item.subs.filter { it.name == subName }.forEach { item.subs.remove(it) } }
 		}
 		showAllItems()
 	}
 
 	private fun showAllItems() {
-		for (cont in list) {
-			println(cont)
-		}
+		list.forEach { println(it) }
 	}
 
 	private fun sortByIds() {
 		val comparator = Comparator.comparing { item: Item -> item.ids[0] }
-		for (item in list) {
-			item.subs.sortWith(comparator)
-		}
+		list.forEach { item -> item.subs.sortWith(comparator) }
 		list.sortWith(comparator)
 		showAllItems()
 	}
 
 	private fun sortByName() {
 		val comparator = Comparator.comparing { item: Item -> item.name }
+		list.forEach { item -> item.subs.sortWith(comparator) }
 		list.sortWith(comparator)
-		for (item in list) {
-			item.subs.sortWith(comparator)
-		}
 		showAllItems()
 	}
 }

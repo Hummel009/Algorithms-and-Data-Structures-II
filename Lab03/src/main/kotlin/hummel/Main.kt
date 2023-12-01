@@ -42,9 +42,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	private var counterABR = 0
 
 	init {
-		for (i in arr.indices) {
-			push(arr[i])
-		}
+		arr.forEach { push(it) }
 	}
 
 	fun print() {
@@ -177,9 +175,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 		val list = arr.toMutableList()
 		list.remove(removal)
 		arr = list.toIntArray()
-		for (i in arr.indices) {
-			push(arr[i])
-		}
+		arr.forEach { push(it) }
 	}
 
 	class Node(var value: Int) {
