@@ -24,17 +24,9 @@ fun main() {
 
 	// Print distances in graph as a table
 	println("Adjustment matrix:")
-	print("\n |")
-	for (k in adjMatrix.indices) {
-		System.out.printf("__%d_|", k + 1)
-	}
-	println()
+	println("\n |${adjMatrix.indices.joinToString("|") { "_${it + 1}_" }}")
 	for (i in adjMatrix.indices) {
-		print("${i + 1}|")
-		for (j in adjMatrix.indices) {
-			print(" ${"${adjMatrix[i][j]}".padStart(2, ' ')} |")
-		}
-		println()
+		println("${i + 1}| " + adjMatrix[i].joinToString(" | "))
 	}
 	println()
 

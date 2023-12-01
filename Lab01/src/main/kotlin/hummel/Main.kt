@@ -19,63 +19,53 @@ fun main() {
 	println("─██████──────────██████─██████──██████─██████████████████─██████████████─")
 	println("─────────────────────────────────────────────────────────────────────────")
 
-	var floor: Floors
-	var roomType: RoomType
-	var windowType: WindowType
-
 	print("Enter the color of the floor (green, black, grey): ")
-	loop@ while (true) {
-		try {
-			val input = readln().uppercase()
-			floor = Floors.valueOf(input)
-			break
-		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
-			continue@loop
-		}
-	}
+	val floor = readEnumSafe<Floors>()
 
 	print("Enter the color of the room (green, black, grey): ")
 	val color = readln()
 
 	print("Enter if there is glowing in the room (true/false): ")
-	val hasGlowing = readln()
+	val hasGlowing = readBooleanSafe()
 
 	print("Enter if glowing is direct in the room (true/false): ")
-	val isGlowingDirect = readln()
+	val isGlowingDirect = readBooleanSafe()
 
 	print("Enter if there is med environment in the room (true/false): ")
-	val hasMedEnvironment = readln()
+	val hasMedEnvironment = readBooleanSafe()
 
 	print("Enter the room type of the room: ")
-	loop@ while (true) {
-		try {
-			val input = readln().uppercase()
-			roomType = RoomType.valueOf(input)
-			break
-		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
-			continue@loop
-		}
-	}
+	val roomType = readEnumSafe<RoomType>()
 
 	print("Enter the window type of the room: ")
-	loop@ while (true) {
-		try {
-			val input = readln().uppercase()
-			windowType = WindowType.valueOf(input)
-			break
-		} catch (e: Exception) {
-			print("Error! Enter the correct value: ")
-			continue@loop
-		}
-	}
+	val windowType = readEnumSafe<WindowType>()
 
 	val room = Room(color, hasGlowing, isGlowingDirect, hasMedEnvironment, roomType, windowType)
 
-	val blackRoom = Room("grey", "true", "false", "false", RoomType.ROOM, WindowType.SMALL)
-	val lab = Room("grey", "true", "true", "true", RoomType.ROOM, WindowType.BIG)
-	val prison = Room("green", "false", "false", "false", RoomType.ROOM, WindowType.NONE)
+	val blackRoom = Room(
+		"grey",
+		hasGlowing = true,
+		isGlowingDirect = false,
+		hasMedEnvironment = false,
+		roomType = RoomType.CORRIDOR,
+		windowType = WindowType.SMALL
+	)
+	val lab = Room(
+		"grey",
+		hasGlowing = true,
+		isGlowingDirect = true,
+		hasMedEnvironment = true,
+		roomType = RoomType.ROOM,
+		windowType = WindowType.BIG
+	)
+	val prison = Room(
+		"green",
+		hasGlowing = false,
+		isGlowingDirect = false,
+		hasMedEnvironment = false,
+		roomType = RoomType.BLOCK,
+		windowType = WindowType.NONE
+	)
 
 	println("|=======================================|")
 	println("|==============  GO BACK  ==============|")
@@ -91,7 +81,7 @@ fun main() {
 				Turn to the angle of 45 degrees to right and go 18 steps.
 				Turn to the angle of 90 degrees to right and go forward.
 				Turn to the angle of 45 degrees to right and go 48 steps.
-				Then use lift.Turn to the angle of 45 degrees to left and go 50 metres.
+				Then use lift. Turn to the angle of 45 degrees to left and go 50 metres.
 				""".trimIndent()
 			)
 		} else {
@@ -100,7 +90,8 @@ fun main() {
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
 			println(
-				"""You are on the second floor.
+				"""
+				You are on the first floor.
 				Turn left and go $left1 steps.
 				Then turn right and go $right steps.
 				Turn left and go $left2 steps.
@@ -133,7 +124,8 @@ fun main() {
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
 			println(
-				"""You are on the second floor.
+				"""
+				You are on the second floor.
 				Turn left and go $left1 steps.
 				Then turn right and go $right steps.
 				Turn left and go $left2 steps.
@@ -170,12 +162,12 @@ fun main() {
 			val left2 = rand.nextInt(20) + 20
 			val right = rand.nextInt(20) + 20
 			println(
-				"""You are on the second floor.
+				"""
+				You are on the third floor.
 				Turn left and go $left1 steps.
 				Then turn right and go $right steps.
 				Turn left and go $left2 steps.
-				Then use lift.
-				""".trimIndent()
+				Then use lift.""".trimIndent()
 			)
 			drawAsAMatrix(left1, right, left2)
 		}
@@ -206,18 +198,39 @@ fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	}
 	matrix[x][y] = "L"
 	matrix[12][12] = "S"
+	println()
 	println("|=======================================|")
 	println("|===============  ROUTE  ===============|")
 	println("|=======================================|")
 	println()
 	println("==========================")
-	for (i in matrix.indices) {
-		for (j in matrix[i].indices) {
-			print(matrix[i][j])
+	for (row in matrix) {
+		for (col in row) {
+			print(col)
 		}
 		println()
 	}
 	println("==========================")
+}
+
+inline fun <reified E : Enum<E>> readEnumSafe(): E {
+	while (true) {
+		try {
+			val input = readln().uppercase()
+			return enumValueOf<E>(input)
+		} catch (e: Exception) {
+			print("Error! Enter the correct value: ")
+		}
+	}
+}
+
+fun readBooleanSafe(): Boolean {
+	return try {
+		readln().toBoolean()
+	} catch (e: Exception) {
+		print("Error! Enter the correct value: ")
+		readBooleanSafe()
+	}
 }
 
 enum class Floors {
@@ -225,12 +238,12 @@ enum class Floors {
 }
 
 data class Room(
-	var color: String,
-	var hasGlowing: String,
-	var isGlowingDirect: String,
-	var hasMedEnvironment: String,
-	var roomType: RoomType,
-	var windowType: WindowType
+	val color: String,
+	val hasGlowing: Boolean,
+	val isGlowingDirect: Boolean,
+	val hasMedEnvironment: Boolean,
+	val roomType: RoomType,
+	val windowType: WindowType
 ) {
 	enum class RoomType {
 		BLOCK, ROOM, CORRIDOR;

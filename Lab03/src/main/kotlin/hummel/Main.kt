@@ -159,15 +159,14 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 
 	private fun push(root: Node?, key: Int): Node {
-		if (root == null) {
-			return Node(key)
-		}
-		if (key < root.value) {
-			root.left = push(root.left, key)
-		} else if (key > root.value) {
-			root.right = push(root.right, key)
-		}
-		return root
+		return root?.let {
+			if (key < it.value) {
+				it.left = push(it.left, key)
+			} else if (key > it.value) {
+				it.right = push(it.right, key)
+			}
+			it
+		} ?: Node(key)
 	}
 
 	fun remove() {

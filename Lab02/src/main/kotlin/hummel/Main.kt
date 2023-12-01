@@ -21,7 +21,7 @@ object Launcher {
 
 	fun init() {
 		functions.clear()
-		functions["add"] = ::addItem
+		functions["init"] = ::initItems
 		functions["edit"] = ::editItem
 		functions["remove"] = ::removeItem
 		functions["show"] = ::showAllItems
@@ -34,7 +34,7 @@ object Launcher {
 		functions.forEach { println(it.key) }
 	}
 
-	private fun addItem() {
+	private fun initItems() {
 		val base1SubIds = mutableListOf(73, 86)
 		val base1Ids = mutableListOf(17, 81)
 		val base2Sub1Ids = mutableListOf(11, 20, 33, 98)
