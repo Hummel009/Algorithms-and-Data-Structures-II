@@ -103,7 +103,9 @@ object Launcher {
 		} else {
 			print("Wrong! Enter the sub-item name then: ")
 			val subName = readln()
-			list.forEach { item -> item.subs.filter { it.name == subName }.forEach { editItem(it) } }
+			list.forEach { item ->
+				item.subs.asSequence().filter { it.name == subName }.forEach { editItem(it) }
+			}
 		}
 		showAllItems()
 	}
@@ -119,7 +121,9 @@ object Launcher {
 		} else {
 			print("Wrong! Enter the sub-item name then: ")
 			val subName = readln()
-			list.forEach { item -> item.subs.filter { it.name == subName }.forEach { item.subs.remove(it) } }
+			list.forEach { item ->
+				item.subs.asSequence().filter { it.name == subName }.forEach { item.subs.remove(it) }
+			}
 		}
 		showAllItems()
 	}
