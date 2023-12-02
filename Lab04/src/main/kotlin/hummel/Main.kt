@@ -47,7 +47,11 @@ fun main() {
 
 	// Print all ways from start node to end node
 	println("Ways from node $startNode to node $endNode:")
-	ways.map { it.map { node -> node + 1 } }.forEach { println(it.joinToString(" -> ")) }
+	ways.map { way ->
+		way.map { node -> node + 1 }
+	}.forEach {
+		println(it.joinToString(" -> "))
+	}
 	println()
 
 	// Calculate max and min ways from start node to end node
@@ -63,22 +67,29 @@ fun main() {
 
 	// Calculate graph center
 	val distances = Array(n) { IntArray(n) { Int.MAX_VALUE } }
-	(0 until n).forEach { bfs(it, adjMatrix, distances) }
+	for (i in 0 until n) {
+		bfs(i, adjMatrix, distances)
+	}
 
 	val centers = getCenters(distances).map { it + 1 }
 	println("Centers: $centers")
 }
 
 fun getCenters(distances: Array<IntArray>): Set<Int> {
-	val numVertices = distances.size
 	val centers = mutableSetOf<Int>()
 
-	(0 until numVertices).forEach { i ->
+	for (i in distances.indices) {
 		var maxDist = Int.MIN_VALUE
 
-		(0 until numVertices).filter { i != it }.forEach { maxDist = max(maxDist, distances[i][it]) }
+		distances.indices.filter { j ->
+			i != j
+		}.forEach { j ->
+			maxDist = max(maxDist, distances[i][j])
+		}
 
-		val isCenter = (0 until numVertices).none { i != it && distances[i][it] > maxDist }
+		val isCenter = distances.indices.none { j ->
+			i != j && distances[i][j] > maxDist
+		}
 
 		if (isCenter) {
 			centers.add(i)
