@@ -21,8 +21,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@main
         with:
-          arguments: build
-          build-root-directory: ./Lab01
+          arguments: :Lab01:build
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
@@ -40,8 +39,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@main
         with:
-          arguments: build
-          build-root-directory: ./Lab02
+          arguments: :Lab02:build
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
@@ -59,8 +57,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@main
         with:
-          arguments: build
-          build-root-directory: ./Lab03
+          arguments: :Lab03:build
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
@@ -78,8 +75,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@main
         with:
-          arguments: build
-          build-root-directory: ./Lab04
+          arguments: :Lab04:build
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
