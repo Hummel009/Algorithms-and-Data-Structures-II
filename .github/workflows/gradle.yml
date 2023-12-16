@@ -18,28 +18,28 @@ jobs:
         with:
           java-version: '21'
           distribution: temurin
-      - name: Build Lab01
+      - name: Build appLab1
         uses: gradle/gradle-build-action@main
         with:
-          arguments: :Lab01:build
-      - name: Build Lab02
+          arguments: :appLab1:build
+      - name: Build appLab2
         uses: gradle/gradle-build-action@main
         with:
-          arguments: :Lab02:build
-      - name: Build Lab03
+          arguments: :appLab2:build
+      - name: Build appLab3
         uses: gradle/gradle-build-action@main
         with:
-          arguments: :Lab03:build
-      - name: Build Lab04
+          arguments: :appLab3:build
+      - name: Build appLab4
         uses: gradle/gradle-build-action@main
         with:
-          arguments: :Lab04:build
+          arguments: :appLab4:build
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
           name: compiled-artifact
           path: |
-            ./Lab01/build/libs/*.jar
-            ./Lab02/build/libs/*.jar
-            ./Lab03/build/libs/*.jar
-            ./Lab04/build/libs/*.jar
+            ./appLab1/build/libs/*.jar
+            ./appLab2/build/libs/*.jar
+            ./appLab3/build/libs/*.jar
+            ./appLab4/build/libs/*.jar

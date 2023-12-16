@@ -1,4 +1,4 @@
-include(":Lab01")
-include(":Lab02")
-include(":Lab03")
-include(":Lab04")
+include(":appLab1")
+include(":appLab2")
+include(":appLab3")
+include(":appLab4")
