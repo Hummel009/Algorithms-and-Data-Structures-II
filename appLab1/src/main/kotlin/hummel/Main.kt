@@ -2,7 +2,11 @@ package hummel
 
 import hummel.Room.RoomType
 import hummel.Room.WindowType
-import java.util.*
+import java.security.SecureRandom
+import java.util.random.RandomGenerator
+
+private const val separ: String = "|=======================================|"
+private val random: RandomGenerator = SecureRandom()
 
 fun main() {
 	println("─────────────────────────────────────────────────────────────────────────")
@@ -67,9 +71,9 @@ fun main() {
 		windowType = WindowType.NONE
 	)
 
-	println("|=======================================|")
+	println(separ)
 	println("|==============  GO BACK  ==============|")
-	println("|=======================================|")
+	println(separ)
 	println()
 	when (floor) {
 		Floors.BLACK -> if (room == blackRoom) {
@@ -85,10 +89,9 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val rand = Random()
-			val left1 = rand.nextInt(20) + 20
-			val left2 = rand.nextInt(20) + 20
-			val right = rand.nextInt(20) + 20
+			val left1 = random.nextInt(20) + 20
+			val left2 = random.nextInt(20) + 20
+			val right = random.nextInt(20) + 20
 			println(
 				"""
 				You are on the first floor.
@@ -119,10 +122,9 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val rand = Random()
-			val left1 = rand.nextInt(20) + 20
-			val left2 = rand.nextInt(20) + 20
-			val right = rand.nextInt(20) + 20
+			val left1 = random.nextInt(20) + 20
+			val left2 = random.nextInt(20) + 20
+			val right = random.nextInt(20) + 20
 			println(
 				"""
 				You are on the second floor.
@@ -157,10 +159,9 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val rand = Random()
-			val left1 = rand.nextInt(20) + 20
-			val left2 = rand.nextInt(20) + 20
-			val right = rand.nextInt(20) + 20
+			val left1 = random.nextInt(20) + 20
+			val left2 = random.nextInt(20) + 20
+			val right = random.nextInt(20) + 20
 			println(
 				"""
 				You are on the third floor.
@@ -199,13 +200,13 @@ fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	matrix[x][y] = "L"
 	matrix[12][12] = "S"
 	println()
-	println("|=======================================|")
+	println(separ)
 	println("|===============  ROUTE  ===============|")
-	println("|=======================================|")
+	println(separ)
 	println()
-	println("==========================")
+	println(separ)
 	matrix.forEach { row -> row.forEach { print(it) }; println() }
-	println("==========================")
+	println(separ)
 }
 
 inline fun <reified E : Enum<E>> readEnumSafe(): E {

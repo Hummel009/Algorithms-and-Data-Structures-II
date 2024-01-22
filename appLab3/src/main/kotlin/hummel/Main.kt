@@ -1,5 +1,8 @@
 package hummel
 
+private const val rr = "R) --> "
+private const val l = "L) "
+private const val r = "R) "
 
 fun main() {
 	println("ENTER NUMBERS (example: 45 10 7 12 90 50):")
@@ -55,8 +58,8 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 		var tab = s
 		println(tab + isLeft + root.value)
 		tab += "   "
-		root.left?.let { print(it, tab, "L) ") }
-		root.right?.let { print(it, tab, "R) ") }
+		root.left?.let { print(it, tab, l) }
+		root.right?.let { print(it, tab, r) }
 	}
 
 	fun printABR() {
@@ -83,10 +86,10 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 		var tab = s
 		println(tab + isLeft + root.value)
 		tab += "   "
-		root.left?.let { printABRLinked(it, tab, "L) ") }
-		root.right?.let { printABRLinked(it, tab, "R) ") } ?: run {
+		root.left?.let { printABRLinked(it, tab, l) }
+		root.right?.let { printABRLinked(it, tab, r) } ?: run {
 			val i = typeABR.indexOf(root.value)
-			println(tab + "R) --> " + typeABR[i + 1])
+			println(tab + rr + typeABR[i + 1])
 		}
 	}
 
@@ -114,10 +117,10 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 		var tab = s
 		println(tab + isLeft + root.value)
 		tab += "   "
-		root.left?.let { printARBLinked(it, tab, "L) ") }
-		root.right?.let { printARBLinked(it, tab, "R) ") } ?: run {
+		root.left?.let { printARBLinked(it, tab, l) }
+		root.right?.let { printARBLinked(it, tab, r) } ?: run {
 			val i = typeARB.indexOf(root.value)
-			println(tab + "R) --> " + typeARB[i + 1])
+			println(tab + rr + typeARB[i + 1])
 		}
 	}
 
@@ -145,10 +148,10 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 		var tab = s
 		println(tab + isLeft + root.value)
 		tab += "   "
-		root.left?.let { printRABLinked(it, tab, "L) ") }
-		root.right?.let { printRABLinked(it, tab, "R) ") } ?: run {
+		root.left?.let { printRABLinked(it, tab, l) }
+		root.right?.let { printRABLinked(it, tab, r) } ?: run {
 			val i = typeRAB.indexOf(root.value)
-			println(tab + "R) --> " + typeRAB[i + 1])
+			println(tab + rr + typeRAB[i + 1])
 		}
 	}
 
