@@ -1,4 +1,13 @@
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=code_smells)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=security_rating)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=bugs)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=duplicated_lines_density)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=reliability_rating)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=alert_status)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=sqale_index)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=ncloc)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
 
 Мои лабораторные работы для BSUIR/БГУИР (белорусский государственный университет информатики и радиоэлектроники).
 
