@@ -35,7 +35,7 @@ fun main() {
 	bst.printABRLinked()
 }
 
-class ADS03(private var arr: IntArray, private var removal: Int) {
+private class ADS03(private var arr: IntArray, private var removal: Int) {
 	private var root: Node? = null
 	private var typeRAB = IntArray(100)
 	private var typeARB = IntArray(100)
@@ -187,7 +187,7 @@ class ADS03(private var arr: IntArray, private var removal: Int) {
 	}
 }
 
-fun readIntSafe(): Int {
+private fun readIntSafe(): Int {
 	return try {
 		readln().toInt()
 	} catch (e: Exception) {

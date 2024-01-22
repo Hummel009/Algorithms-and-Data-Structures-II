@@ -75,7 +75,7 @@ fun main() {
 	println("Centers: $centers")
 }
 
-fun getCenters(distances: Array<IntArray>): Set<Int> {
+private fun getCenters(distances: Array<IntArray>): Set<Int> {
 	val centers = mutableSetOf<Int>()
 
 	for (i in distances.indices) {
@@ -99,7 +99,7 @@ fun getCenters(distances: Array<IntArray>): Set<Int> {
 	return centers
 }
 
-fun dfs(
+private fun dfs(
 	curr: Int,
 	end: Int,
 	visited: BooleanArray,
@@ -122,7 +122,7 @@ fun dfs(
 	visited[curr] = false
 }
 
-fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
+private fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 	val queue = LinkedList<Int>()
 	queue.offer(start)
 	distances[start][start] = 0
@@ -137,7 +137,7 @@ fun bfs(start: Int, adjMatrix: Array<IntArray>, distances: Array<IntArray>) {
 	}
 }
 
-fun readIntSafe(): Int {
+private fun readIntSafe(): Int {
 	return try {
 		readln().toInt()
 	} catch (e: Exception) {
@@ -146,7 +146,7 @@ fun readIntSafe(): Int {
 	}
 }
 
-fun readIntSafeRange(range: IntRange): Int {
+private fun readIntSafeRange(range: IntRange): Int {
 	return try {
 		val num = readln().toInt()
 		if (num - 1 !in range) {

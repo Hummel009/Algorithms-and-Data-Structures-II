@@ -16,7 +16,7 @@ fun main() {
 	}
 }
 
-object Launcher {
+private object Launcher {
 	val functions: MutableMap<String, () -> Unit> = HashMap()
 
 	fun init() {
@@ -161,7 +161,7 @@ class Item(
 	}
 }
 
-fun readIntSafe(): Int {
+private fun readIntSafe(): Int {
 	return try {
 		readln().toInt()
 	} catch (e: Exception) {

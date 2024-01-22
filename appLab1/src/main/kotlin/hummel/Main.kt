@@ -89,19 +89,7 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val left1 = random.nextInt(20) + 20
-			val left2 = random.nextInt(20) + 20
-			val right = random.nextInt(20) + 20
-			println(
-				"""
-				You are on the first floor.
-				Turn left and go $left1 steps.
-				Then turn right and go $right steps.
-				Turn left and go $left2 steps.
-				Then use lift.
-				""".trimIndent()
-			)
-			drawAsAMatrix(left1, right, left2)
+			pseudoWay("first")
 		}
 
 		Floors.GREY -> if (room == lab) {
@@ -122,19 +110,7 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val left1 = random.nextInt(20) + 20
-			val left2 = random.nextInt(20) + 20
-			val right = random.nextInt(20) + 20
-			println(
-				"""
-				You are on the second floor.
-				Turn left and go $left1 steps.
-				Then turn right and go $right steps.
-				Turn left and go $left2 steps.
-				Then use lift.
-				""".trimIndent()
-			)
-			drawAsAMatrix(left1, right, left2)
+			pseudoWay("second")
 		}
 
 		Floors.GREEN -> if (room == prison) {
@@ -159,23 +135,27 @@ fun main() {
 				""".trimIndent()
 			)
 		} else {
-			val left1 = random.nextInt(20) + 20
-			val left2 = random.nextInt(20) + 20
-			val right = random.nextInt(20) + 20
-			println(
-				"""
-				You are on the third floor.
-				Turn left and go $left1 steps.
-				Then turn right and go $right steps.
-				Turn left and go $left2 steps.
-				Then use lift.""".trimIndent()
-			)
-			drawAsAMatrix(left1, right, left2)
+			pseudoWay("third")
 		}
 	}
 }
 
-fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
+private fun pseudoWay(floor: String) {
+	val left1 = random.nextInt(20) + 20
+	val left2 = random.nextInt(20) + 20
+	val right = random.nextInt(20) + 20
+	println(
+		"""
+				You are on the $floor floor.
+				Turn left and go $left1 steps.
+				Then turn right and go $right steps.
+				Turn left and go $left2 steps.
+				Then use lift.""".trimIndent()
+	)
+	drawAsAMatrix(left1, right, left2)
+}
+
+private fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	var lLeft1 = left1 / 5
 	var lRight = right / 5
 	var lLeft2 = left2 / 5
@@ -209,7 +189,7 @@ fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	println(separ)
 }
 
-inline fun <reified E : Enum<E>> readEnumSafe(): E {
+private inline fun <reified E : Enum<E>> readEnumSafe(): E {
 	while (true) {
 		try {
 			val input = readln().uppercase()
@@ -220,7 +200,7 @@ inline fun <reified E : Enum<E>> readEnumSafe(): E {
 	}
 }
 
-fun readBooleanSafe(): Boolean {
+private fun readBooleanSafe(): Boolean {
 	return try {
 		readln().toBoolean()
 	} catch (e: Exception) {
@@ -229,11 +209,11 @@ fun readBooleanSafe(): Boolean {
 	}
 }
 
-enum class Floors {
+private enum class Floors {
 	BLACK, GREY, GREEN;
 }
 
-data class Room(
+private data class Room(
 	val color: String,
 	val hasGlowing: Boolean,
 	val isGlowingDirect: Boolean,
