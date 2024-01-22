@@ -1,4 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hummel009_Algorithms-and-Data-Structures-II)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hummel009_Algorithms-and-Data-Structures-II&metric=alert_status)](https://sonarcloud.io/summary/overall?id=Hummel009_Algorithms-and-Data-Structures-II)
 
 Мои лабораторные работы для BSUIR/БГУИР (белорусский государственный университет информатики и радиоэлектроники).
 
