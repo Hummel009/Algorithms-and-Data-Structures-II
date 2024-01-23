@@ -1,8 +1,8 @@
 package hummel
 
-private const val rr = "R) --> "
-private const val l = "L) "
-private const val r = "R) "
+private const val rr: String = "R) --> "
+private const val l: String = "L) "
+private const val r: String = "R) "
 
 fun main() {
 	println("ENTER NUMBERS (example: 45 10 7 12 90 50):")

@@ -1,6 +1,6 @@
 package hummel
 
-var list: MutableList<Item> = ArrayList()
+private var list: MutableList<Item> = ArrayList()
 
 fun main() {
 	Launcher.init()

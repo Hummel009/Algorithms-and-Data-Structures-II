@@ -2,11 +2,10 @@ package hummel
 
 import hummel.Room.RoomType
 import hummel.Room.WindowType
-import java.security.SecureRandom
-import java.util.random.RandomGenerator
+import java.util.*
 
 private const val separ: String = "|=======================================|"
-private val random: RandomGenerator = SecureRandom()
+private val random: Random = Random()
 
 fun main() {
 	println("─────────────────────────────────────────────────────────────────────────")
