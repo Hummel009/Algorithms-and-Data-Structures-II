@@ -1,4 +1,4 @@
-package com.github.hummel.ads
+package com.github.hummel.ads.lab4
 
 import java.util.*
 import kotlin.math.max

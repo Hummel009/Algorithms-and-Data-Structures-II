@@ -1,4 +1,4 @@
-package com.github.hummel.ads
+package com.github.hummel.ads.lab1
 
 import hummel.Room.RoomType
 import hummel.Room.WindowType
