@@ -1,7 +1,7 @@
 package com.github.hummel.ads.lab1
 
-import hummel.Room.RoomType
-import hummel.Room.WindowType
+import com.github.hummel.ads.lab1.Room.RoomType
+import com.github.hummel.ads.lab1.Room.WindowType
 import java.util.*
 
 private const val separ: String = "|=======================================|"
