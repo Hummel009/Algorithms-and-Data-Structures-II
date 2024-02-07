@@ -1,4 +1,4 @@
-package hummel
+package com.github.hummel.ads
 
 private const val rr: String = "R) --> "
 private const val l: String = "L) "

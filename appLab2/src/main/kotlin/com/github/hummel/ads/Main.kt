@@ -1,4 +1,4 @@
-package hummel
+package com.github.hummel.ads
 
 private var list: MutableList<Item> = ArrayList()
 
