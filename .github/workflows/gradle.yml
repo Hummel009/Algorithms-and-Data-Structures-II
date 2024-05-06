@@ -35,5 +35,4 @@ jobs:
         uses: actions/upload-artifact/merge@main
         with:
           name: compiled-artifact
-          overwrite: true
           delete-merged: true
