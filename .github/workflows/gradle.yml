@@ -33,6 +33,7 @@ jobs:
           path: ./app${{matrix.version}}/build/libs/*.jar
   merge:
     runs-on: windows-latest
+    steps:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@main
         with:
