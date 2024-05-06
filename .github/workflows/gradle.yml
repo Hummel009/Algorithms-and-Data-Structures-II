@@ -26,8 +26,12 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew :app${{matrix.version}}:build
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@main
+        with:
+          name: compiled-artifact-${{github.run_number}}-${{github.run_attempt}}
+          path: ./app${{matrix.version}}/build/libs/*.jar
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@main
         with:
           name: compiled-artifact
-          path: ./app${{matrix.version}}/build/libs/*.jar
-          merge-multiple: true
+          delete-merged: true
