@@ -29,11 +29,11 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: compiled-artifact-${{github.run_number}}-${{github.run_attempt}}
-          override: true
+          overwrite: true
           path: ./app${{matrix.version}}/build/libs/*.jar
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@main
         with:
           name: compiled-artifact
-          override: true
+          overwrite: true
           delete-merged: true
