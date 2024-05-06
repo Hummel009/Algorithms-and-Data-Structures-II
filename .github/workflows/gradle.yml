@@ -31,6 +31,8 @@ jobs:
           name: compiled-artifact-${{github.run_number}}-${{github.run_attempt}}
           overwrite: true
           path: ./app${{matrix.version}}/build/libs/*.jar
+  merge:
+    runs-on: windows-latest
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@main
         with:
