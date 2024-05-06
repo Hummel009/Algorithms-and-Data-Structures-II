@@ -26,7 +26,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew :app${{matrix.version}}:build
       - name: Upload Artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-artifact
           path: ./app${{matrix.version}}/build/libs/*.jar
