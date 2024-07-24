@@ -4,7 +4,7 @@ import com.github.hummel.ads.lab1.Room.RoomType
 import com.github.hummel.ads.lab1.Room.WindowType
 import java.util.*
 
-private const val separ: String = "|=======================================|"
+private const val separator: String = "|=======================================|"
 private val random: Random = Random()
 
 fun main() {
@@ -70,9 +70,9 @@ fun main() {
 		windowType = WindowType.NONE
 	)
 
-	println(separ)
+	println(separator)
 	println("|==============  GO BACK  ==============|")
-	println(separ)
+	println(separator)
 	println()
 	when (floor) {
 		Floors.BLACK -> if (room == blackRoom) {
@@ -179,13 +179,13 @@ private fun drawAsAMatrix(left1: Int, right: Int, left2: Int) {
 	matrix[x][y] = "L"
 	matrix[12][12] = "S"
 	println()
-	println(separ)
+	println(separator)
 	println("|===============  ROUTE  ===============|")
-	println(separ)
+	println(separator)
 	println()
-	println(separ)
+	println(separator)
 	matrix.forEach { row -> row.forEach { print(it) }; println() }
-	println(separ)
+	println(separator)
 }
 
 private inline fun <reified E : Enum<E>> readEnumSafe(): E {
